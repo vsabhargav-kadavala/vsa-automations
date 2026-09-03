@@ -1,46 +1,3462 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Age Calculator </title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <div class="container">
-        <form>
-            <div class="base">
-                <div class="enter">
-                    <h4>Age Calculator</h4>
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+    <title>
+      VSA Automations | AI Automation for Smarter Businesses
+    </title>
+    <meta
+    name="description"
+    content="VSA Automations builds AI-powered automation systems that help businesses automate repetitive work, manage leads, streamline operations and connect business tools."
+  >
+    <meta
+    name="keywords"
+    content="AI automation, business automation, AI agents, workflow automation, business process automation, WhatsApp automation, CRM automation, lead automation"
+  >
+    <meta
+    property="og:title"
+    content="VSA Automations | AI Automation for Smarter Businesses"
+  >
+    <meta
+    property="og:description"
+    content="VSA Automations builds AI-powered automation systems that help businesses automate repetitive work, manage leads, streamline operations and connect business tools."
+  >
+    <meta
+    property="og:type"
+    content="website"
+  >
+    <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+    <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+          tailwind.config = {
+            theme: {
+              extend: {
+                colors: {
+                  'bg-deep': 'hsl(var(--bg-deep) / <alpha-value>)',
+                  'bg-base': 'hsl(var(--bg-base) / <alpha-value>)',
+                  'bg-surface': 'hsl(var(--bg-surface) / <alpha-value>)',
+                  'bg-surface-2': 'hsl(var(--bg-surface-2) / <alpha-value>)',
+                  'text-primary': 'hsl(var(--text-primary) / <alpha-value>)',
+                  'text-secondary': 'hsl(var(--text-secondary) / <alpha-value>)',
+                  'text-muted': 'hsl(var(--text-muted) / <alpha-value>)',
+                  'brand-blue': 'hsl(var(--brand-blue) / <alpha-value>)',
+                  'brand-violet': 'hsl(var(--brand-violet) / <alpha-value>)',
+                  'brand-cyan': 'hsl(var(--brand-cyan) / <alpha-value>)',
+                  'border-soft': 'hsl(var(--border-soft) / <alpha-value>)',
+                  'success-soft': 'hsl(var(--success-soft) / <alpha-value>)'
+                },
+                fontFamily: {
+                  sora: ['Sora', 'sans-serif'],
+                  inter: ['Inter', 'sans-serif']
+                },
+                boxShadow: {
+                  soft: '0 18px 45px hsl(var(--bg-deep) / 0.55)',
+                  glow: '0 0 0 1px hsl(var(--border-soft) / 0.6), 0 20px 60px hsl(var(--brand-blue) / 0.12)'
+                },
+                borderRadius: {
+                  '2xl': '1.2rem',
+                  '3xl': '1.7rem'
+                }
+              }
+            }
+          };
+        
+    </script>
+    <style>
+      :root {
+        --bg-deep: 224 34% 7%;
+        --bg-base: 222 30% 10%;
+        --bg-surface: 222 22% 14%;
+        --bg-surface-2: 223 20% 18%;
+        --text-primary: 210 40% 98%;
+        --text-secondary: 220 18% 76%;
+        --text-muted: 221 14% 62%;
+        --brand-blue: 214 95% 60%;
+        --brand-violet: 266 87% 68%;
+        --brand-cyan: 191 96% 56%;
+        --border-soft: 222 18% 26%;
+        --success-soft: 152 54% 48%;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background:         radial-gradient(900px 520px at 8% -10%, hsl(var(--brand-blue) / 0.09), transparent 58%),         radial-gradient(980px 560px at 92% 4%, hsl(var(--brand-violet) / 0.08), transparent 56%),         hsl(var(--bg-deep));
+        color: hsl(var(--text-primary));
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,     h2,     h3,     h4 {
+        font-family: 'Sora', sans-serif;
+        letter-spacing: -0.02em;
+      }
+      section {
+        scroll-margin-top: 92px;
+      }
+      .focus-ring:focus-visible {
+        outline: 2px solid hsl(var(--brand-cyan) / 0.9);
+        outline-offset: 2px;
+      }
+      .glass-nav {
+        background: hsl(var(--bg-base) / 0.35);
+        border-bottom: 1px solid hsl(var(--border-soft) / 0.2);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      #site-header.is-scrolled {
+        background: hsl(var(--bg-base) / 0.86);
+        border-bottom-color: hsl(var(--border-soft) / 0.6);
+        box-shadow: 0 12px 30px hsl(var(--bg-deep) / 0.45);
+      }
+      .chip-gradient {
+        background: linear-gradient(120deg, hsl(var(--brand-blue)), hsl(var(--brand-violet)));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .btn-primary {
+        background: linear-gradient(120deg, hsl(var(--brand-blue)), hsl(var(--brand-violet)));
+        color: hsl(var(--text-primary));
+        border: 1px solid hsl(var(--brand-blue) / 0.55);
+        box-shadow:         0 6px 18px hsl(var(--brand-blue) / 0.22),         inset 0 1px 0 hsl(var(--text-primary) / 0.2);
+        transition: transform 0.24s ease, box-shadow 0.24s ease, filter 0.24s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.06);
+        box-shadow:         0 12px 24px hsl(var(--brand-blue) / 0.27),         0 0 0 1px hsl(var(--brand-violet) / 0.4);
+      }
+      .btn-secondary {
+        background: hsl(var(--bg-surface) / 0.55);
+        border: 1px solid hsl(var(--border-soft) / 0.85);
+        color: hsl(var(--text-secondary));
+        transition: border-color 0.24s ease, color 0.24s ease, transform 0.24s ease;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .btn-secondary:hover {
+        color: hsl(var(--text-primary));
+        border-color: hsl(var(--brand-blue) / 0.55);
+        transform: translateY(-1px);
+      }
+      .surface-card {
+        background: linear-gradient(160deg, hsl(var(--bg-surface) / 0.93), hsl(var(--bg-surface-2) / 0.87));
+        border: 1px solid hsl(var(--border-soft) / 0.8);
+        box-shadow:         0 1px 0 hsl(var(--text-primary) / 0.05) inset,         0 14px 30px hsl(var(--bg-deep) / 0.5);
+      }
+      .soft-hover {
+        transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+      }
+      .soft-hover:hover {
+        transform: translateY(-4px);
+        border-color: hsl(var(--brand-blue) / 0.48);
+        box-shadow:         0 1px 0 hsl(var(--text-primary) / 0.08) inset,         0 18px 34px hsl(var(--brand-blue) / 0.12);
+      }
+      .glow-backdrop {
+        position: absolute;
+        inset: auto;
+        width: 420px;
+        height: 420px;
+        border-radius: 999px;
+        filter: blur(72px);
+        pointer-events: none;
+        background: radial-gradient(circle at center, hsl(var(--brand-blue) / 0.18), transparent 65%);
+      }
+      .network-shell {
+        position: relative;
+        border: 1px solid hsl(var(--border-soft) / 0.74);
+        border-radius: 1.5rem;
+        background:         radial-gradient(330px 180px at 55% 40%, hsl(var(--brand-cyan) / 0.08), transparent 65%),         radial-gradient(300px 200px at 40% 80%, hsl(var(--brand-violet) / 0.08), transparent 63%),         hsl(var(--bg-surface) / 0.74);
+        backdrop-filter: blur(11px);
+        -webkit-backdrop-filter: blur(11px);
+        box-shadow:         0 1px 0 hsl(var(--text-primary) / 0.06) inset,         0 16px 36px hsl(var(--bg-deep) / 0.52);
+      }
+      .engine-node {
+        position: absolute;
+        border-radius: 999px;
+        border: 1px solid hsl(var(--border-soft) / 0.85);
+        background: hsl(var(--bg-base) / 0.8);
+        color: hsl(var(--text-secondary));
+        padding: 0.32rem 0.58rem;
+        font-size: 0.69rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        box-shadow: 0 8px 18px hsl(var(--bg-deep) / 0.45);
+        white-space: nowrap;
+        animation: floatNode 6s ease-in-out infinite;
+      }
+      .engine-node:nth-child(odd) {
+        animation-duration: 7.2s;
+      }
+      .engine-node:nth-child(even) {
+        animation-duration: 8s;
+      }
+      .engine-center {
+        position: absolute;
+        inset: 50% auto auto 50%;
+        transform: translate(-50%, -50%);
+        width: 168px;
+        min-height: 168px;
+        border-radius: 999px;
+        border: 1px solid hsl(var(--brand-blue) / 0.65);
+        background:         radial-gradient(circle at 35% 30%, hsl(var(--brand-cyan) / 0.38), transparent 60%),         linear-gradient(145deg, hsl(var(--brand-blue) / 0.38), hsl(var(--brand-violet) / 0.34));
+        color: hsl(var(--text-primary));
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-family: 'Sora', sans-serif;
+        font-size: 0.7rem;
+        line-height: 1.3;
+        box-shadow:         0 0 0 8px hsl(var(--brand-blue) / 0.08),         0 0 38px hsl(var(--brand-violet) / 0.38);
+        animation: centerPulse 4.5s ease-in-out infinite;
+        z-index: 2;
+        padding: 1rem;
+      }
+      .line-svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .line-flow {
+        stroke: hsl(var(--brand-cyan) / 0.4);
+        stroke-width: 1.2;
+        fill: none;
+        stroke-dasharray: 6 8;
+        animation: flowStroke 8s linear infinite;
+      }
+      .line-flow.alt {
+        stroke: hsl(var(--brand-violet) / 0.34);
+        animation-duration: 10s;
+      }
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 999px;
+        background: hsl(var(--brand-cyan) / 0.86);
+        box-shadow: 0 0 10px hsl(var(--brand-cyan) / 0.72);
+        animation: particleFloat 7.4s linear infinite;
+        opacity: 0.55;
+        z-index: 1;
+      }
+      .trust-bullet {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: linear-gradient(120deg, hsl(var(--brand-blue)), hsl(var(--brand-violet)));
+        box-shadow: 0 0 0 4px hsl(var(--brand-blue) / 0.12);
+        flex-shrink: 0;
+      }
+      .progress-step {
+        border: 1px solid hsl(var(--border-soft) / 0.85);
+        background: hsl(var(--bg-surface) / 0.72);
+        border-radius: 0.95rem;
+        padding: 0.72rem 0.82rem;
+        color: hsl(var(--text-secondary));
+        transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.84rem;
+      }
+      .progress-step:hover {
+        transform: translateY(-2px);
+        border-color: hsl(var(--brand-blue) / 0.44);
+        background: hsl(var(--bg-surface-2) / 0.8);
+      }
+      .flow-connector {
+        width: 1.8rem;
+        display: grid;
+        place-items: center;
+        color: hsl(var(--brand-cyan) / 0.85);
+      }
+      .before-after-step {
+        border: 1px solid hsl(var(--border-soft) / 0.7);
+        background: hsl(var(--bg-surface) / 0.64);
+        border-radius: 0.95rem;
+        padding: 0.82rem 0.85rem;
+        color: hsl(var(--text-secondary));
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      }
+      .before-after-step.is-active {
+        border-color: hsl(var(--brand-blue) / 0.55);
+        background: hsl(var(--bg-surface-2) / 0.9);
+        box-shadow: 0 0 0 1px hsl(var(--brand-cyan) / 0.28) inset;
+        color: hsl(var(--text-primary));
+      }
+      .timeline-track {
+        position: relative;
+        border-top: 1px dashed hsl(var(--border-soft) / 0.8);
+      }
+      .timeline-dot {
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        border: 1px solid hsl(var(--brand-blue) / 0.65);
+        background: hsl(var(--bg-surface-2) / 0.85);
+        color: hsl(var(--brand-cyan));
+        box-shadow: 0 0 0 5px hsl(var(--brand-blue) / 0.09);
+        display: grid;
+        place-items: center;
+        margin: 0 auto;
+      }
+      .industry-card {
+        min-height: 170px;
+      }
+      .faq-item {
+        border: 1px solid hsl(var(--border-soft) / 0.82);
+        border-radius: 1rem;
+        background: hsl(var(--bg-surface) / 0.68);
+        overflow: hidden;
+      }
+      .faq-panel {
+        max-height: 0;
+        overflow: hidden;
+        padding-top: 0;
+        padding-bottom: 0;
+        transition: max-height 0.35s ease, padding 0.35s ease;
+      }
+      .faq-item[data-open="true"] .faq-panel {
+        padding-top: 0.7rem;
+        padding-bottom: 1rem;
+      }
+      .faq-chevron {
+        transition: transform 0.3s ease;
+      }
+      .faq-item[data-open="true"] .faq-chevron {
+        transform: rotate(180deg);
+      }
+      .mobile-panel {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+      .orbit-ring {
+        position: absolute;
+        inset: 9% 9%;
+        border: 1px dashed hsl(var(--border-soft) / 0.5);
+        border-radius: 999px;
+        pointer-events: none;
+      }
+      .orbit-ring.ring-2 {
+        inset: 17% 17%;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+      html.js-anim .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+        transition-delay: var(--reveal-delay, 0s);
+      }
+      html.js-anim .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      #scroll-to-top {
+        transform: translateY(20px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.24s ease, transform 0.24s ease;
+      }
+      #scroll-to-top.is-visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      @keyframes flowStroke {
+        to {
+          stroke-dashoffset: -280;
+        }
+      }
+      @keyframes floatNode {
+        0%,       100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-7px);
+        }
+      }
+      @keyframes centerPulse {
+        0%,       100% {
+          box-shadow:           0 0 0 8px hsl(var(--brand-blue) / 0.08),           0 0 38px hsl(var(--brand-violet) / 0.34);
+        }
+        50% {
+          box-shadow:           0 0 0 10px hsl(var(--brand-blue) / 0.11),           0 0 50px hsl(var(--brand-cyan) / 0.42);
+        }
+      }
+      @keyframes particleFloat {
+        0% {
+          transform: translateY(0) translateX(0);
+          opacity: 0.18;
+        }
+        40% {
+          opacity: 0.65;
+        }
+        100% {
+          transform: translateY(-44px) translateX(18px);
+          opacity: 0;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal,       html.js-anim .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+    <script src="https://code.iconify.design/iconify-icon/3.0.2/iconify-icon.min.js"></script>
+  </head>
+  <body class="bg-bg-deep text-text-primary">
+    <header
+    id="site-header"
+    class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300"
+    data-widget="mobile-nav"
+  >
+      <nav
+      class="max-w-7xl mx-auto px-6 lg:px-8"
+      aria-label="Main navigation"
+    >
+        <div class="h-20 flex items-center justify-between">
+          <a
+          href="#hero"
+          class="font-sora text-xl font-bold tracking-tight text-text-primary focus-ring"
+          data-su-element="link"
+        >
+            VSA Automations
+          </a>
+          <ul
+          class="hidden md:flex items-center gap-8 text-sm text-text-secondary"
+          data-su-element="list"
+        >
+            <li>
+              <a
+              href="#hero"
+              class="hover:text-text-primary transition-colors focus-ring rounded-md px-1 py-1"
+              data-su-element="link"
+            >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+              href="#solution"
+              class="hover:text-text-primary transition-colors focus-ring rounded-md px-1 py-1"
+              data-su-element="link"
+            >
+                Solutions
+              </a>
+            </li>
+            <li>
+              <a
+              href="#how-it-works"
+              class="hover:text-text-primary transition-colors focus-ring rounded-md px-1 py-1"
+              data-su-element="link"
+            >
+                How It Works
+              </a>
+            </li>
+            <li>
+              <a
+              href="#industries"
+              class="hover:text-text-primary transition-colors focus-ring rounded-md px-1 py-1"
+              data-su-element="link"
+            >
+                Industries
+              </a>
+            </li>
+            <li>
+              <a
+              href="#about"
+              class="hover:text-text-primary transition-colors focus-ring rounded-md px-1 py-1"
+              data-su-element="link"
+            >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+              href="#contact"
+              class="hover:text-text-primary transition-colors focus-ring rounded-md px-1 py-1"
+              data-su-element="link"
+            >
+                Contact
+              </a>
+            </li>
+          </ul>
+          <div class="hidden md:flex items-center gap-3">
+            <a
+            href="#contact"
+            class="btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold focus-ring"
+            data-su-element="button"
+          >
+              <iconify-icon icon="solar:rocket-bold-duotone">
+              </iconify-icon>
+              Get Started
+            </a>
+          </div>
+          <button
+          type="button"
+          data-nav-toggle
+          aria-expanded="false"
+          aria-controls="mobile-nav-panel"
+          aria-label="Toggle navigation menu"
+          class="md:hidden h-11 w-11 rounded-lg border border-border-soft bg-bg-surface/70 text-text-primary grid place-items-center focus-ring"
+        >
+            <iconify-icon
+            icon="solar:hamburger-menu-line-duotone"
+            class="text-xl"
+          >
+            </iconify-icon>
+          </button>
+        </div>
+        <div
+        id="mobile-nav-panel"
+        data-nav-panel
+        class="mobile-panel md:hidden border-t border-border-soft/70"
+      >
+          <ul
+          class="space-y-2 text-sm text-text-secondary"
+          data-su-element="list"
+        >
+            <li>
+              <a
+              href="#hero"
+              class="block rounded-lg px-3 py-2.5 hover:bg-bg-surface-2 hover:text-text-primary focus-ring"
+              data-su-element="link"
+            >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+              href="#solution"
+              class="block rounded-lg px-3 py-2.5 hover:bg-bg-surface-2 hover:text-text-primary focus-ring"
+              data-su-element="link"
+            >
+                Solutions
+              </a>
+            </li>
+            <li>
+              <a
+              href="#how-it-works"
+              class="block rounded-lg px-3 py-2.5 hover:bg-bg-surface-2 hover:text-text-primary focus-ring"
+              data-su-element="link"
+            >
+                How It Works
+              </a>
+            </li>
+            <li>
+              <a
+              href="#industries"
+              class="block rounded-lg px-3 py-2.5 hover:bg-bg-surface-2 hover:text-text-primary focus-ring"
+              data-su-element="link"
+            >
+                Industries
+              </a>
+            </li>
+            <li>
+              <a
+              href="#about"
+              class="block rounded-lg px-3 py-2.5 hover:bg-bg-surface-2 hover:text-text-primary focus-ring"
+              data-su-element="link"
+            >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+              href="#contact"
+              class="block rounded-lg px-3 py-2.5 hover:bg-bg-surface-2 hover:text-text-primary focus-ring"
+              data-su-element="link"
+            >
+                Contact
+              </a>
+            </li>
+          </ul>
+          <div class="pt-4">
+            <a
+            href="#contact"
+            class="btn-primary w-full inline-flex justify-center items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold focus-ring"
+            data-su-element="button"
+          >
+              <iconify-icon icon="solar:rocket-bold-duotone">
+              </iconify-icon>
+              Get Started
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section
+      id="hero"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Hero"
+      class="relative pt-36 pb-20 md:pt-44 md:pb-28 overflow-hidden"
+    >
+        <div
+        class="glow-backdrop -left-24 top-16"
+        aria-hidden="true"
+      >
+        </div>
+        <div
+        class="glow-backdrop right-0 top-32"
+        style="background: radial-gradient(circle at center, hsl(var(--brand-violet) / 0.17), transparent 66%);"
+        aria-hidden="true"
+      >
+        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div class="grid lg:grid-cols-2 gap-12 lg:gap-14 items-center">
+            <div class="reveal space-y-8">
+              <div
+              class="inline-flex items-center gap-2 rounded-full border border-border-soft bg-bg-surface/70 px-4 py-2 text-xs text-text-secondary"
+              data-su-element="subheading"
+            >
+                <iconify-icon icon="solar:stars-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                AI Automation for Smarter Businesses
+              </div>
+              <div class="space-y-5">
+                <h1
+                class="text-[2.15rem] sm:text-5xl md:text-6xl font-extrabold leading-[1.06]"
+                data-su-element="heading"
+              >
+                  Turn Business Problems Into
+                  <span class="chip-gradient">
+                    Intelligent Automation
+                  </span>
+                  .
+                </h1>
+                <p
+                class="max-w-2xl text-base md:text-lg leading-relaxed text-text-secondary"
+                data-su-element="paragraph"
+              >
+                  VSA Automations helps you map manual bottlenecks, understand customer signals with AI, and execute connected workflows across your tools — so leads are handled faster, teams move cleaner, and operations scale without extra busywork.
+                </p>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+                <a
+                href="#contact"
+                class="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold focus-ring"
+                data-su-element="button"
+              >
+                  <iconify-icon icon="solar:play-circle-bold-duotone" class="text-base">
+                  </iconify-icon>
+                  Get Your Business Automated
+                </a>
+                <a
+                href="#solution"
+                class="btn-secondary inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold focus-ring"
+                data-su-element="button"
+              >
+                  <iconify-icon icon="solar:arrow-right-up-line-duotone" class="text-base">
+                  </iconify-icon>
+                  Explore Solutions
+                </a>
+              </div>
+              <div
+              class="pt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-text-muted"
+              data-su-element="list"
+            >
+                <div class="inline-flex items-center gap-2">
+                  <span class="trust-bullet">
+                  </span>
+                  <span>
+                    AI Automation
+                  </span>
                 </div>
-                <div class="block">
-                    <p class="title">Date</p>
-                    <input type="text" name="date" id="date" placeholder="dd" required="required" minlength="1"
-                        maxlength="2" />
+                <div class="inline-flex items-center gap-2">
+                  <span class="trust-bullet">
+                  </span>
+                  <span>
+                    AI Agents
+                  </span>
                 </div>
-                <div class="block">
-                    <p class="title">Month</p>
-                    <input type="text" name="month" id="month" placeholder="mm" required="required" minlength="1"
-                        maxlength="2" />
+                <div class="inline-flex items-center gap-2">
+                  <span class="trust-bullet">
+                  </span>
+                  <span>
+                    Business Workflows
+                  </span>
                 </div>
-                <div class="block">
-                    <p class="title">Year</p>
-                    <input type="text" name="year" id="year" placeholder="yyyy" required="required" minlength="4"
-                        maxlength="4" />
+                <div class="inline-flex items-center gap-2">
+                  <span class="trust-bullet">
+                  </span>
+                  <span>
+                    Integrations
+                  </span>
                 </div>
+              </div>
             </div>
-            <div class="base">
-                <div class="enter">
-                    <input type="button" name="submit" value="Submit" onclick="age()" />
+            <div class="reveal" style="--reveal-delay: 0.08s;">
+              <div
+              class="network-shell min-h-[540px] p-6 md:p-8 relative overflow-hidden"
+              data-su-element="image"
+              role="img"
+              aria-label="VSA AI automation engine connecting website, WhatsApp, CRM, email, leads, calendar and support systems"
+            >
+                <div class="absolute inset-0 opacity-40" aria-hidden="true">
+                  <div class="particle left-[14%] bottom-[24%]">
+                  </div>
+                  <div class="particle left-[72%] bottom-[14%]" style="animation-delay: 1.2s;">
+                  </div>
+                  <div class="particle left-[58%] top-[70%]" style="animation-delay: 2.6s;">
+                  </div>
+                  <div class="particle left-[20%] top-[55%]" style="animation-delay: 3.3s;">
+                  </div>
+                  <div class="particle left-[78%] top-[34%]" style="animation-delay: 4.2s;">
+                  </div>
                 </div>
+                <svg
+                class="line-svg"
+                viewBox="0 0 560 520"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                  <path class="line-flow" d="M280 260 L95 86">
+                  </path>
+                  <path class="line-flow alt" d="M280 260 L190 52">
+                  </path>
+                  <path class="line-flow" d="M280 260 L366 58">
+                  </path>
+                  <path class="line-flow alt" d="M280 260 L470 106">
+                  </path>
+                  <path class="line-flow" d="M280 260 L70 226">
+                  </path>
+                  <path class="line-flow alt" d="M280 260 L84 340">
+                  </path>
+                  <path class="line-flow" d="M280 260 L176 446">
+                  </path>
+                  <path class="line-flow alt" d="M280 260 L290 456">
+                  </path>
+                  <path class="line-flow" d="M280 260 L430 422">
+                  </path>
+                  <path class="line-flow alt" d="M280 260 L505 286">
+                  </path>
+                </svg>
+                <div class="engine-center">
+                  VSA AI
+                  <br>
+                  AUTOMATION
+                  <br>
+                  ENGINE
+                </div>
+                <div class="engine-node top-[9%] left-[6%]">
+                  <iconify-icon icon="solar:global-line-duotone" class="text-brand-cyan">
+                  </iconify-icon>
+                  Website
+                </div>
+                <div class="engine-node top-[2%] left-[30%]">
+                  <iconify-icon icon="solar:chat-round-line-duotone" class="text-brand-cyan">
+                  </iconify-icon>
+                  WhatsApp
+                </div>
+                <div class="engine-node top-[3%] right-[24%]">
+                  <iconify-icon icon="solar:user-id-line-duotone" class="text-brand-cyan">
+                  </iconify-icon>
+                  CRM
+                </div>
+                <div class="engine-node top-[13%] right-[4%]">
+                  <iconify-icon icon="solar:letter-line-duotone" class="text-brand-cyan">
+                  </iconify-icon>
+                  Email
+                </div>
+                <div class="engine-node top-[39%] left-[2%]">
+                  <iconify-icon icon="solar:users-group-rounded-line-duotone" class="text-brand-cyan">
+                  </iconify-icon>
+                  Lead Management
+                </div>
+                <div class="engine-node top-[64%] left-[6%]">
+                  <iconify-icon icon="solar:document-text-line-duotone" class="text-brand-cyan">
+                  </iconify-icon>
+                  Google Sheets
+                </div>
+                <div class="engine-node bottom-[9%] left-[26%]">
+                  <iconify-icon icon="solar:calendar-line-duotone" class="text-brand-cyan">
+                  </iconify-icon>
+                  Calendar
+                </div>
+                <div class="engine-node bottom-[7%] right-[30%]">
+                  <iconify-icon icon="solar:headphones-round-sound-line-duotone" class="text-brand-cyan">
+                  </iconify-icon>
+                  Customer Support
+                </div>
+                <div class="engine-node bottom-[31%] right-[3%]">
+                  <iconify-icon icon="solar:graph-new-line-duotone" class="text-brand-cyan">
+                  </iconify-icon>
+                  Sales
+                </div>
+                <div class="absolute left-4 right-4 bottom-4">
+                  <div class="rounded-2xl border border-border-soft/70 bg-bg-base/70 px-4 py-3">
+                    <div class="flex flex-wrap items-center justify-center gap-2 text-[0.69rem] text-text-secondary">
+                      <span class="inline-flex items-center gap-1.5 rounded-full border border-border-soft/70 px-2.5 py-1">
+                        <iconify-icon icon="solar:inbox-line-duotone" class="text-brand-cyan">
+                        </iconify-icon>
+                        NEW LEAD
+                      </span>
+                      <iconify-icon icon="solar:arrow-right-line-duotone" class="text-brand-blue">
+                      </iconify-icon>
+                      <span class="inline-flex items-center gap-1.5 rounded-full border border-border-soft/70 px-2.5 py-1">
+                        <iconify-icon icon="solar:brain-line-duotone" class="text-brand-cyan">
+                        </iconify-icon>
+                        AI UNDERSTANDING
+                      </span>
+                      <iconify-icon icon="solar:arrow-right-line-duotone" class="text-brand-blue">
+                      </iconify-icon>
+                      <span class="inline-flex items-center gap-1.5 rounded-full border border-border-soft/70 px-2.5 py-1">
+                        <iconify-icon icon="solar:refresh-circle-line-duotone" class="text-brand-cyan">
+                        </iconify-icon>
+                        WORKFLOW
+                      </span>
+                      <iconify-icon icon="solar:arrow-right-line-duotone" class="text-brand-blue">
+                      </iconify-icon>
+                      <span class="inline-flex items-center gap-1.5 rounded-full border border-border-soft/70 px-2.5 py-1">
+                        <iconify-icon icon="solar:check-read-line-duotone" class="text-brand-cyan">
+                        </iconify-icon>
+                        CRM + WHATSAPP + EMAIL
+                      </span>
+                      <iconify-icon icon="solar:arrow-right-line-duotone" class="text-brand-blue">
+                      </iconify-icon>
+                      <span class="inline-flex items-center gap-1.5 rounded-full border border-border-soft/70 px-2.5 py-1">
+                        <iconify-icon icon="solar:shield-check-line-duotone" class="text-success-soft">
+                        </iconify-icon>
+                        ACTION COMPLETED
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div id="age"></div>
-        </form>
-    </div>
-    <script src="app.js"></script>
-</body>
-
+          </div>
+          <hr
+          class="mt-16 border-border-soft/70 reveal"
+          data-su-element="divider"
+        >
+        </div>
+      </section>
+      <section
+      id="problem"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Problem"
+      class="py-20 md:py-28"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <h2
+            class="text-3xl md:text-5xl font-bold leading-tight"
+            data-su-element="heading"
+          >
+              Your Business Doesn’t Need More Manual Work.
+            </h2>
+            <p
+            class="mt-3 text-xl md:text-2xl text-text-secondary"
+            data-su-element="subheading"
+          >
+              It needs smarter systems.
+            </p>
+          </div>
+          <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal">
+              <div class="inline-flex h-11 w-11 rounded-xl border border-border-soft bg-bg-surface-2/80 items-center justify-center text-brand-cyan">
+                <iconify-icon icon="solar:close-circle-line-duotone" class="text-xl">
+                </iconify-icon>
+              </div>
+              <h3
+              class="mt-4 text-lg font-semibold"
+              data-su-element="heading"
+            >
+                Missed Leads
+              </h3>
+              <p
+              class="mt-2 text-sm text-text-secondary leading-relaxed"
+              data-su-element="paragraph"
+            >
+                Leads wait too long for a response, and high-intent buyers move to faster competitors.
+              </p>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.05s;">
+              <div class="inline-flex h-11 w-11 rounded-xl border border-border-soft bg-bg-surface-2/80 items-center justify-center text-brand-cyan">
+                <iconify-icon icon="solar:repeat-line-duotone" class="text-xl">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold" data-su-element="heading">
+                Repetitive Tasks
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary leading-relaxed" data-su-element="paragraph">
+                Teams spend core hours on updates, status checks, and routine admin instead of revenue work.
+              </p>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.1s;">
+              <div class="inline-flex h-11 w-11 rounded-xl border border-border-soft bg-bg-surface-2/80 items-center justify-center text-brand-cyan">
+                <iconify-icon icon="solar:clock-circle-line-duotone" class="text-xl">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold" data-su-element="heading">
+                Slow Customer Response
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary leading-relaxed" data-su-element="paragraph">
+                Inquiry queues grow while your staff manually triages messages across channels.
+              </p>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.02s;">
+              <div class="inline-flex h-11 w-11 rounded-xl border border-border-soft bg-bg-surface-2/80 items-center justify-center text-brand-cyan">
+                <iconify-icon icon="solar:clipboard-text-line-duotone" class="text-xl">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold" data-su-element="heading">
+                Manual Data Entry
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary leading-relaxed" data-su-element="paragraph">
+                Critical customer details are copied between tools, creating delays and avoidable errors.
+              </p>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.07s;">
+              <div class="inline-flex h-11 w-11 rounded-xl border border-border-soft bg-bg-surface-2/80 items-center justify-center text-brand-cyan">
+                <iconify-icon icon="solar:bell-bing-line-duotone" class="text-xl">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold" data-su-element="heading">
+                Forgotten Follow-Ups
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary leading-relaxed" data-su-element="paragraph">
+                Without intelligent reminders, sales opportunities quietly go cold.
+              </p>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.12s;">
+              <div class="inline-flex h-11 w-11 rounded-xl border border-border-soft bg-bg-surface-2/80 items-center justify-center text-brand-cyan">
+                <iconify-icon icon="solar:link-broken-line-duotone" class="text-xl">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-lg font-semibold" data-su-element="heading">
+                Disconnected Tools
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary leading-relaxed" data-su-element="paragraph">
+                CRM, WhatsApp, website, and internal ops run in silos with no shared automation layer.
+              </p>
+            </article>
+          </div>
+          <div class="mt-10 reveal">
+            <div class="rounded-2xl border border-border-soft/80 bg-bg-base/55 px-6 py-5 flex flex-col md:flex-row md:items-center gap-4 md:justify-between">
+              <p
+              class="text-text-secondary"
+              data-su-element="paragraph"
+            >
+                What if your business could handle these processes automatically?
+              </p>
+              <a
+              href="#solution"
+              class="btn-secondary inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold focus-ring"
+              data-su-element="button"
+            >
+                <iconify-icon icon="solar:magic-stick-3-line-duotone">
+                </iconify-icon>
+                Find What You Can Automate
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+      id="solution"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Solution"
+      class="py-20 md:py-28 bg-bg-base/55 border-y border-border-soft/65"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="grid lg:grid-cols-5 gap-10 items-start">
+            <div class="lg:col-span-2 reveal">
+              <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+                Meet Your Business Automation Engine.
+              </h2>
+              <p class="mt-5 text-text-secondary leading-relaxed" data-su-element="paragraph">
+                We start by analyzing how your workflows behave today. Then we design an AI-first system around your existing tools so customer requests are understood, actions are triggered, and your team is looped in only when high-value decisions need human focus.
+              </p>
+              <p class="mt-4 text-text-secondary leading-relaxed" data-su-element="paragraph">
+                The result is not another isolated script. It’s an integrated operation layer built for lead speed, response quality, and predictable execution.
+              </p>
+              <a
+              href="#services"
+              class="mt-7 btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold focus-ring"
+              data-su-element="button"
+            >
+                <iconify-icon icon="solar:layers-bold-duotone">
+                </iconify-icon>
+                Explore Solutions
+              </a>
+            </div>
+            <div class="lg:col-span-3 reveal" style="--reveal-delay: 0.08s;">
+              <div class="surface-card rounded-3xl p-6 md:p-8">
+                <div class="space-y-3.5">
+                  <div class="flex flex-wrap md:flex-nowrap items-center">
+                    <div class="progress-step w-full">
+                      <iconify-icon icon="solar:user-plus-line-duotone" class="text-brand-cyan">
+                      </iconify-icon>
+                      Customer / Lead
+                    </div>
+                    <div class="flow-connector hidden md:grid">
+                      <iconify-icon icon="solar:arrow-right-line-duotone">
+                      </iconify-icon>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap md:flex-nowrap items-center">
+                    <div class="progress-step w-full">
+                      <iconify-icon icon="solar:brain-line-duotone" class="text-brand-cyan">
+                      </iconify-icon>
+                      AI understands request
+                    </div>
+                    <div class="flow-connector hidden md:grid">
+                      <iconify-icon icon="solar:arrow-right-line-duotone">
+                      </iconify-icon>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap md:flex-nowrap items-center">
+                    <div class="progress-step w-full">
+                      <iconify-icon icon="solar:routing-line-duotone" class="text-brand-cyan">
+                      </iconify-icon>
+                      Automation decides next step
+                    </div>
+                    <div class="flow-connector hidden md:grid">
+                      <iconify-icon icon="solar:arrow-right-line-duotone">
+                      </iconify-icon>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap md:flex-nowrap items-center">
+                    <div class="progress-step w-full">
+                      <iconify-icon icon="solar:chat-round-line-duotone" class="text-brand-cyan">
+                      </iconify-icon>
+                      Communication triggered
+                    </div>
+                    <div class="flow-connector hidden md:grid">
+                      <iconify-icon icon="solar:arrow-right-line-duotone">
+                      </iconify-icon>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap md:flex-nowrap items-center">
+                    <div class="progress-step w-full">
+                      <iconify-icon icon="solar:user-id-line-duotone" class="text-brand-cyan">
+                      </iconify-icon>
+                      CRM updated
+                    </div>
+                    <div class="flow-connector hidden md:grid">
+                      <iconify-icon icon="solar:arrow-right-line-duotone">
+                      </iconify-icon>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap md:flex-nowrap items-center">
+                    <div class="progress-step w-full">
+                      <iconify-icon icon="solar:bell-line-duotone" class="text-brand-cyan">
+                      </iconify-icon>
+                      Team notified
+                    </div>
+                    <div class="flow-connector hidden md:grid">
+                      <iconify-icon icon="solar:arrow-right-line-duotone">
+                      </iconify-icon>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap md:flex-nowrap items-center">
+                    <div class="progress-step w-full">
+                      <iconify-icon icon="solar:calendar-line-duotone" class="text-brand-cyan">
+                      </iconify-icon>
+                      Follow-up scheduled
+                    </div>
+                    <div class="flow-connector hidden md:grid">
+                      <iconify-icon icon="solar:arrow-right-line-duotone">
+                      </iconify-icon>
+                    </div>
+                  </div>
+                  <div class="progress-step">
+                    <iconify-icon icon="solar:refresh-circle-line-duotone" class="text-success-soft">
+                    </iconify-icon>
+                    Process continues automatically
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+      id="services"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Services"
+      class="py-20 md:py-28"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              Services That Turn Complexity Into Connected Execution.
+            </h2>
+            <p class="mt-4 text-text-secondary leading-relaxed" data-su-element="subheading">
+              From AI-driven lead handling to full process orchestration, each service is designed to fit your current systems and improve business flow without operational chaos.
+            </p>
+          </div>
+          <div class="mt-12 grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal">
+              <div class="text-brand-cyan text-2xl">
+                <iconify-icon icon="solar:shield-user-line-duotone">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-xl font-semibold" data-su-element="heading">
+                AI Agents
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Conversational agents that qualify, answer, and route customer requests instantly.
+              </p>
+              <a href="#ai-agent" class="mt-4 inline-flex items-center gap-2 text-sm text-brand-cyan hover:text-brand-blue focus-ring rounded-md" data-su-element="link">
+                Learn More
+                <iconify-icon icon="solar:arrow-right-line-duotone">
+                </iconify-icon>
+              </a>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.04s;">
+              <div class="text-brand-cyan text-2xl">
+                <iconify-icon icon="solar:user-plus-line-duotone">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-xl font-semibold" data-su-element="heading">
+                Lead Automation
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Capture, score, assign, and follow-up workflows that prevent lead leakage.
+              </p>
+              <a href="#automation-examples" class="mt-4 inline-flex items-center gap-2 text-sm text-brand-cyan hover:text-brand-blue focus-ring rounded-md" data-su-element="link">
+                Learn More
+                <iconify-icon icon="solar:arrow-right-line-duotone">
+                </iconify-icon>
+              </a>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.08s;">
+              <div class="text-brand-cyan text-2xl">
+                <iconify-icon icon="solar:chat-round-line-duotone">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-xl font-semibold" data-su-element="heading">
+                WhatsApp Automation
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Real-time conversational journeys for inquiries, reminders, and updates.
+              </p>
+              <a href="#contact" class="mt-4 inline-flex items-center gap-2 text-sm text-brand-cyan hover:text-brand-blue focus-ring rounded-md" data-su-element="link">
+                Learn More
+                <iconify-icon icon="solar:arrow-right-line-duotone">
+                </iconify-icon>
+              </a>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.02s;">
+              <div class="text-brand-cyan text-2xl">
+                <iconify-icon icon="solar:user-id-line-duotone">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-xl font-semibold" data-su-element="heading">
+                CRM Automation
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Keep records accurate automatically with synced status, tasks, and notes.
+              </p>
+              <a href="#technology-ecosystem" class="mt-4 inline-flex items-center gap-2 text-sm text-brand-cyan hover:text-brand-blue focus-ring rounded-md" data-su-element="link">
+                Learn More
+                <iconify-icon icon="solar:arrow-right-line-duotone">
+                </iconify-icon>
+              </a>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.06s;">
+              <div class="text-brand-cyan text-2xl">
+                <iconify-icon icon="solar:letter-line-duotone">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-xl font-semibold" data-su-element="heading">
+                Email Automation
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Triggered email flows aligned with lead stage, behavior, and sales timing.
+              </p>
+              <a href="#automation-examples" class="mt-4 inline-flex items-center gap-2 text-sm text-brand-cyan hover:text-brand-blue focus-ring rounded-md" data-su-element="link">
+                Learn More
+                <iconify-icon icon="solar:arrow-right-line-duotone">
+                </iconify-icon>
+              </a>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.1s;">
+              <div class="text-brand-cyan text-2xl">
+                <iconify-icon icon="solar:graph-new-line-duotone">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-xl font-semibold" data-su-element="heading">
+                Sales Automation
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Pipeline-driven steps that trigger actions without manual chasing.
+              </p>
+              <a href="#roi-impact" class="mt-4 inline-flex items-center gap-2 text-sm text-brand-cyan hover:text-brand-blue focus-ring rounded-md" data-su-element="link">
+                Learn More
+                <iconify-icon icon="solar:arrow-right-line-duotone">
+                </iconify-icon>
+              </a>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.03s;">
+              <div class="text-brand-cyan text-2xl">
+                <iconify-icon icon="solar:headphones-round-sound-line-duotone">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-xl font-semibold" data-su-element="heading">
+                Customer Support Automation
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Deflect repetitive tickets and route complex cases to the right people faster.
+              </p>
+              <a href="#contact" class="mt-4 inline-flex items-center gap-2 text-sm text-brand-cyan hover:text-brand-blue focus-ring rounded-md" data-su-element="link">
+                Learn More
+                <iconify-icon icon="solar:arrow-right-line-duotone">
+                </iconify-icon>
+              </a>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.07s;">
+              <div class="text-brand-cyan text-2xl">
+                <iconify-icon icon="solar:settings-line-duotone">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-xl font-semibold" data-su-element="heading">
+                Business Process Automation
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Build reliable rules for approvals, notifications, handoffs, and reporting.
+              </p>
+              <a href="#how-it-works" class="mt-4 inline-flex items-center gap-2 text-sm text-brand-cyan hover:text-brand-blue focus-ring rounded-md" data-su-element="link">
+                Learn More
+                <iconify-icon icon="solar:arrow-right-line-duotone">
+                </iconify-icon>
+              </a>
+            </article>
+            <article class="surface-card soft-hover rounded-2xl p-6 reveal" style="--reveal-delay: 0.11s;">
+              <div class="text-brand-cyan text-2xl">
+                <iconify-icon icon="solar:atom-line-duotone">
+                </iconify-icon>
+              </div>
+              <h3 class="mt-4 text-xl font-semibold" data-su-element="heading">
+                Custom AI Automation
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Bespoke automation architecture for your workflows, goals, and stack maturity.
+              </p>
+              <a href="#contact" class="mt-4 inline-flex items-center gap-2 text-sm text-brand-cyan hover:text-brand-blue focus-ring rounded-md" data-su-element="link">
+                Learn More
+                <iconify-icon icon="solar:arrow-right-line-duotone">
+                </iconify-icon>
+              </a>
+            </article>
+          </div>
+          <div class="mt-10 reveal">
+            <a
+            href="#contact"
+            class="btn-secondary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold focus-ring"
+            data-su-element="button"
+          >
+              <iconify-icon icon="solar:headphones-round-line-duotone">
+              </iconify-icon>
+              Talk to an Automation Expert
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+      id="before-after"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Before vs After"
+      class="py-20 md:py-28 bg-bg-base/50 border-y border-border-soft/65"
+      data-widget="before-after"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              From Manual Work to Automated Work.
+            </h2>
+            <p class="mt-4 text-text-secondary" data-su-element="paragraph">
+              See how operations evolve when your workflow logic is connected end-to-end.
+            </p>
+          </div>
+          <div class="mt-12 grid lg:grid-cols-2 gap-6 items-start">
+            <article class="surface-card rounded-3xl p-6 reveal">
+              <div class="inline-flex items-center gap-2 rounded-full border border-border-soft bg-bg-surface-2/70 px-3 py-1.5 text-xs text-text-muted">
+                <iconify-icon icon="solar:danger-circle-line-duotone" class="text-brand-violet">
+                </iconify-icon>
+                Before: Manual Sequence
+              </div>
+              <ol class="mt-5 space-y-3" data-su-element="list">
+                <li class="before-after-step" data-step-index="0">
+                  Lead comes in from website or WhatsApp.
+                </li>
+                <li class="before-after-step" data-step-index="1">
+                  Team member checks messages manually.
+                </li>
+                <li class="before-after-step" data-step-index="2">
+                  Details are copied into CRM or spreadsheet.
+                </li>
+                <li class="before-after-step" data-step-index="3">
+                  Follow-up depends on availability.
+                </li>
+                <li class="before-after-step" data-step-index="4">
+                  Reminders are inconsistent across staff.
+                </li>
+                <li class="before-after-step" data-step-index="5">
+                  Opportunity slows down or gets missed.
+                </li>
+              </ol>
+            </article>
+            <article class="surface-card rounded-3xl p-6 reveal" style="--reveal-delay: 0.08s;">
+              <div class="inline-flex items-center gap-2 rounded-full border border-border-soft bg-bg-surface-2/70 px-3 py-1.5 text-xs text-text-muted">
+                <iconify-icon icon="solar:shield-check-line-duotone" class="text-success-soft">
+                </iconify-icon>
+                After: Automated Sequence
+              </div>
+              <ol class="mt-5 space-y-3" data-su-element="list">
+                <li class="before-after-step" data-step-index="0">
+                  Lead captured instantly from every channel.
+                </li>
+                <li class="before-after-step" data-step-index="1">
+                  AI understands intent and qualifies urgency.
+                </li>
+                <li class="before-after-step" data-step-index="2">
+                  CRM record and context are created automatically.
+                </li>
+                <li class="before-after-step" data-step-index="3">
+                  WhatsApp/email communication starts immediately.
+                </li>
+                <li class="before-after-step" data-step-index="4">
+                  Team gets alerted only when action is needed.
+                </li>
+                <li class="before-after-step" data-step-index="5">
+                  Follow-up is scheduled and tracked until completion.
+                </li>
+              </ol>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+      id="how-it-works"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="How It Works"
+      class="py-20 md:py-28"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              From Business Problem to Automated Solution.
+            </h2>
+            <p class="mt-4 text-text-secondary" data-su-element="paragraph">
+              A clear six-step delivery framework that keeps strategy, implementation, and outcomes aligned.
+            </p>
+          </div>
+          <div class="mt-12 hidden md:block reveal">
+            <div class="timeline-track">
+              <div class="grid md:grid-cols-6 gap-5 -mt-6">
+                <article class="surface-card rounded-2xl p-5 text-center">
+                  <div class="timeline-dot">
+                    <iconify-icon icon="solar:folder-with-files-line-duotone">
+                    </iconify-icon>
+                  </div>
+                  <h3 class="mt-4 font-semibold" data-su-element="heading">
+                    Discover
+                  </h3>
+                  <p class="mt-2 text-xs text-text-secondary" data-su-element="paragraph">
+                    Capture goals, bottlenecks, and business context.
+                  </p>
+                </article>
+                <article class="surface-card rounded-2xl p-5 text-center">
+                  <div class="timeline-dot">
+                    <iconify-icon icon="solar:magnifer-line-duotone">
+                    </iconify-icon>
+                  </div>
+                  <h3 class="mt-4 font-semibold" data-su-element="heading">
+                    Analyze
+                  </h3>
+                  <p class="mt-2 text-xs text-text-secondary" data-su-element="paragraph">
+                    Map workflows, tools, exceptions, and dependencies.
+                  </p>
+                </article>
+                <article class="surface-card rounded-2xl p-5 text-center">
+                  <div class="timeline-dot">
+                    <iconify-icon icon="solar:pen-new-square-line-duotone">
+                    </iconify-icon>
+                  </div>
+                  <h3 class="mt-4 font-semibold" data-su-element="heading">
+                    Design
+                  </h3>
+                  <p class="mt-2 text-xs text-text-secondary" data-su-element="paragraph">
+                    Define logic, triggers, handoffs, and channel strategy.
+                  </p>
+                </article>
+                <article class="surface-card rounded-2xl p-5 text-center">
+                  <div class="timeline-dot">
+                    <iconify-icon icon="solar:code-line-duotone">
+                    </iconify-icon>
+                  </div>
+                  <h3 class="mt-4 font-semibold" data-su-element="heading">
+                    Build
+                  </h3>
+                  <p class="mt-2 text-xs text-text-secondary" data-su-element="paragraph">
+                    Implement integrations, AI prompts, and automation rules.
+                  </p>
+                </article>
+                <article class="surface-card rounded-2xl p-5 text-center">
+                  <div class="timeline-dot">
+                    <iconify-icon icon="solar:rocket-line-duotone">
+                    </iconify-icon>
+                  </div>
+                  <h3 class="mt-4 font-semibold" data-su-element="heading">
+                    Launch
+                  </h3>
+                  <p class="mt-2 text-xs text-text-secondary" data-su-element="paragraph">
+                    Go live with monitored rollout and team onboarding.
+                  </p>
+                </article>
+                <article class="surface-card rounded-2xl p-5 text-center">
+                  <div class="timeline-dot">
+                    <iconify-icon icon="solar:restart-circle-line-duotone">
+                    </iconify-icon>
+                  </div>
+                  <h3 class="mt-4 font-semibold" data-su-element="heading">
+                    Optimize
+                  </h3>
+                  <p class="mt-2 text-xs text-text-secondary" data-su-element="paragraph">
+                    Tune performance as your business evolves.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 md:hidden reveal">
+            <ol class="space-y-4" data-su-element="list">
+              <li class="surface-card rounded-2xl p-5 flex gap-4">
+                <div class="timeline-dot shrink-0">
+                  <iconify-icon icon="solar:folder-with-files-line-duotone">
+                  </iconify-icon>
+                </div>
+                <div>
+                  <h3 class="font-semibold" data-su-element="heading">
+                    Discover
+                  </h3>
+                  <p class="mt-1 text-sm text-text-secondary" data-su-element="paragraph">
+                    Capture goals, bottlenecks, and business context.
+                  </p>
+                </div>
+              </li>
+              <li class="surface-card rounded-2xl p-5 flex gap-4">
+                <div class="timeline-dot shrink-0">
+                  <iconify-icon icon="solar:magnifer-line-duotone">
+                  </iconify-icon>
+                </div>
+                <div>
+                  <h3 class="font-semibold" data-su-element="heading">
+                    Analyze
+                  </h3>
+                  <p class="mt-1 text-sm text-text-secondary" data-su-element="paragraph">
+                    Map workflows, tools, exceptions, and dependencies.
+                  </p>
+                </div>
+              </li>
+              <li class="surface-card rounded-2xl p-5 flex gap-4">
+                <div class="timeline-dot shrink-0">
+                  <iconify-icon icon="solar:pen-new-square-line-duotone">
+                  </iconify-icon>
+                </div>
+                <div>
+                  <h3 class="font-semibold" data-su-element="heading">
+                    Design
+                  </h3>
+                  <p class="mt-1 text-sm text-text-secondary" data-su-element="paragraph">
+                    Define logic, triggers, handoffs, and channel strategy.
+                  </p>
+                </div>
+              </li>
+              <li class="surface-card rounded-2xl p-5 flex gap-4">
+                <div class="timeline-dot shrink-0">
+                  <iconify-icon icon="solar:code-line-duotone">
+                  </iconify-icon>
+                </div>
+                <div>
+                  <h3 class="font-semibold" data-su-element="heading">
+                    Build
+                  </h3>
+                  <p class="mt-1 text-sm text-text-secondary" data-su-element="paragraph">
+                    Implement integrations, AI prompts, and automation rules.
+                  </p>
+                </div>
+              </li>
+              <li class="surface-card rounded-2xl p-5 flex gap-4">
+                <div class="timeline-dot shrink-0">
+                  <iconify-icon icon="solar:rocket-line-duotone">
+                  </iconify-icon>
+                </div>
+                <div>
+                  <h3 class="font-semibold" data-su-element="heading">
+                    Launch
+                  </h3>
+                  <p class="mt-1 text-sm text-text-secondary" data-su-element="paragraph">
+                    Go live with monitored rollout and team onboarding.
+                  </p>
+                </div>
+              </li>
+              <li class="surface-card rounded-2xl p-5 flex gap-4">
+                <div class="timeline-dot shrink-0">
+                  <iconify-icon icon="solar:restart-circle-line-duotone">
+                  </iconify-icon>
+                </div>
+                <div>
+                  <h3 class="font-semibold" data-su-element="heading">
+                    Optimize
+                  </h3>
+                  <p class="mt-1 text-sm text-text-secondary" data-su-element="paragraph">
+                    Tune performance as your business evolves.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="mt-9 reveal">
+            <a
+            href="#contact"
+            class="btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold focus-ring"
+            data-su-element="button"
+          >
+              <iconify-icon icon="solar:bolt-bold-duotone">
+              </iconify-icon>
+              Get Your Business Automated
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+      id="industries"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Industries"
+      class="py-20 md:py-28 bg-bg-base/55 border-y border-border-soft/65"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              Automation Designed for Industry Reality.
+            </h2>
+            <p class="mt-4 text-text-secondary" data-su-element="subheading">
+              Every sector has different response patterns, customer expectations, and workflow complexity. We tailor systems to match how your business actually runs.
+            </p>
+          </div>
+          <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <article class="industry-card surface-card rounded-2xl p-5 soft-hover reveal">
+              <h3 class="font-semibold" data-su-element="heading">
+                Real Estate
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Lead qualification, property inquiry response, appointment routing.
+              </p>
+            </article>
+            <article class="industry-card surface-card rounded-2xl p-5 soft-hover reveal" style="--reveal-delay: 0.02s;">
+              <h3 class="font-semibold" data-su-element="heading">
+                Automotive
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Service reminders, test-drive bookings, follow-up orchestration.
+              </p>
+            </article>
+            <article class="industry-card surface-card rounded-2xl p-5 soft-hover reveal" style="--reveal-delay: 0.04s;">
+              <h3 class="font-semibold" data-su-element="heading">
+                Education
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Enrollment inquiry handling, lead nurturing, schedule notifications.
+              </p>
+            </article>
+            <article class="industry-card surface-card rounded-2xl p-5 soft-hover reveal" style="--reveal-delay: 0.06s;">
+              <h3 class="font-semibold" data-su-element="heading">
+                Healthcare
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Appointment flow, patient reminder sequences, support triage.
+              </p>
+            </article>
+            <article class="industry-card surface-card rounded-2xl p-5 soft-hover reveal" style="--reveal-delay: 0.08s;">
+              <h3 class="font-semibold" data-su-element="heading">
+                E-Commerce
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Order updates, customer messaging, retention workflows.
+              </p>
+            </article>
+            <article class="industry-card surface-card rounded-2xl p-5 soft-hover reveal" style="--reveal-delay: 0.01s;">
+              <h3 class="font-semibold" data-su-element="heading">
+                Hospitality
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Reservation inquiries, guest communication, review follow-up.
+              </p>
+            </article>
+            <article class="industry-card surface-card rounded-2xl p-5 soft-hover reveal" style="--reveal-delay: 0.03s;">
+              <h3 class="font-semibold" data-su-element="heading">
+                Agencies
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Client onboarding, reporting workflows, campaign task automation.
+              </p>
+            </article>
+            <article class="industry-card surface-card rounded-2xl p-5 soft-hover reveal" style="--reveal-delay: 0.05s;">
+              <h3 class="font-semibold" data-su-element="heading">
+                Professional Services
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Consult request routing, proposal follow-up, scheduling sync.
+              </p>
+            </article>
+            <article class="industry-card rounded-2xl p-5 soft-hover reveal border border-brand-blue/45 bg-gradient-to-br from-brand-blue/18 to-brand-violet/18" style="--reveal-delay: 0.07s;">
+              <h3 class="font-semibold text-text-primary" data-su-element="heading">
+                Your Business
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                If your workflows repeat, they can be mapped, automated, and improved.
+              </p>
+            </article>
+          </div>
+          <div class="mt-9 reveal">
+            <a
+            href="#contact"
+            class="btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold focus-ring"
+            data-su-element="button"
+          >
+              <iconify-icon icon="solar:target-bold-duotone">
+              </iconify-icon>
+              Find My Automation Opportunities
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+      id="technology-ecosystem"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Technology Ecosystem"
+      class="py-20 md:py-28"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              One Automation Layer. Your Entire Business.
+            </h2>
+            <p class="mt-4 text-text-secondary" data-su-element="paragraph">
+              Connect customer channels, internal operations, and team actions to one AI-powered workflow core.
+            </p>
+          </div>
+          <div class="mt-12 reveal" style="--reveal-delay: 0.08s;">
+            <div
+            class="network-shell min-h-[600px] md:min-h-[640px] rounded-3xl p-5 md:p-7 relative overflow-hidden"
+            data-su-element="image"
+            role="img"
+            aria-label="Central VSA automation engine connected to AI, WhatsApp, website, CRM, email, sheets, calendar, forms, support, sales, marketing and operations"
+          >
+              <div class="orbit-ring" aria-hidden="true">
+              </div>
+              <div class="orbit-ring ring-2" aria-hidden="true">
+              </div>
+              <svg class="line-svg" viewBox="0 0 800 640" preserveAspectRatio="none" aria-hidden="true">
+                <path class="line-flow" d="M400 320 L136 130">
+                </path>
+                <path class="line-flow alt" d="M400 320 L272 74">
+                </path>
+                <path class="line-flow" d="M400 320 L400 60">
+                </path>
+                <path class="line-flow alt" d="M400 320 L535 76">
+                </path>
+                <path class="line-flow" d="M400 320 L675 133">
+                </path>
+                <path class="line-flow alt" d="M400 320 L90 305">
+                </path>
+                <path class="line-flow" d="M400 320 L715 305">
+                </path>
+                <path class="line-flow alt" d="M400 320 L126 500">
+                </path>
+                <path class="line-flow" d="M400 320 L260 562">
+                </path>
+                <path class="line-flow alt" d="M400 320 L400 576">
+                </path>
+                <path class="line-flow" d="M400 320 L545 560">
+                </path>
+                <path class="line-flow alt" d="M400 320 L688 500">
+                </path>
+              </svg>
+              <div class="engine-center text-[0.72rem] md:text-xs">
+                VSA
+                <br>
+                AUTOMATION
+                <br>
+                ENGINE
+              </div>
+              <div class="engine-node left-[8%] top-[10%]">
+                <iconify-icon icon="solar:brain-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                AI
+              </div>
+              <div class="engine-node left-[28%] top-[2%]">
+                <iconify-icon icon="solar:chat-round-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                WhatsApp
+              </div>
+              <div class="engine-node left-[47%] top-[0%]">
+                <iconify-icon icon="solar:global-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                Website
+              </div>
+              <div class="engine-node right-[25%] top-[2%]">
+                <iconify-icon icon="solar:user-id-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                CRM
+              </div>
+              <div class="engine-node right-[7%] top-[10%]">
+                <iconify-icon icon="solar:letter-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                Email
+              </div>
+              <div class="engine-node left-[2%] top-[45%]">
+                <iconify-icon icon="solar:document-text-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                Google Sheets
+              </div>
+              <div class="engine-node right-[2%] top-[45%]">
+                <iconify-icon icon="solar:calendar-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                Calendar
+              </div>
+              <div class="engine-node left-[8%] bottom-[16%]">
+                <iconify-icon icon="solar:clipboard-text-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                Forms
+              </div>
+              <div class="engine-node left-[28%] bottom-[6%]">
+                <iconify-icon icon="solar:headphones-round-sound-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                Customer Support
+              </div>
+              <div class="engine-node left-[47%] bottom-[3%]">
+                <iconify-icon icon="solar:graph-new-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                Sales
+              </div>
+              <div class="engine-node right-[24%] bottom-[6%]">
+                <iconify-icon icon="solar:chart-square-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                Marketing
+              </div>
+              <div class="engine-node right-[6%] bottom-[16%]">
+                <iconify-icon icon="solar:settings-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                Internal Operations
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 text-center reveal">
+            <a
+            href="#roi-impact"
+            class="btn-secondary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold focus-ring"
+            data-su-element="button"
+          >
+              <iconify-icon icon="solar:scanner-line-duotone">
+              </iconify-icon>
+              Find What You Can Automate
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+      id="ai-agent"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="AI Agent"
+      class="py-20 md:py-28 bg-bg-base/52 border-y border-border-soft/65"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-10 items-center">
+            <div class="reveal">
+              <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+                Your Business Can Have an AI Workforce.
+              </h2>
+              <p class="mt-4 text-text-secondary leading-relaxed" data-su-element="subheading">
+                Deploy AI agents that respond instantly, qualify opportunities, capture context, and hand over only the right conversations to your team.
+              </p>
+              <div class="mt-7 flex flex-wrap items-center gap-2.5">
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-border-soft bg-bg-surface/70 px-3 py-1.5 text-xs text-text-secondary">
+                  AI understands
+                </span>
+                <iconify-icon icon="solar:arrow-right-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-border-soft bg-bg-surface/70 px-3 py-1.5 text-xs text-text-secondary">
+                  qualifies
+                </span>
+                <iconify-icon icon="solar:arrow-right-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-border-soft bg-bg-surface/70 px-3 py-1.5 text-xs text-text-secondary">
+                  records
+                </span>
+                <iconify-icon icon="solar:arrow-right-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-border-soft bg-bg-surface/70 px-3 py-1.5 text-xs text-text-secondary">
+                  routes
+                </span>
+                <iconify-icon icon="solar:arrow-right-line-duotone" class="text-brand-cyan">
+                </iconify-icon>
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-border-soft bg-bg-surface/70 px-3 py-1.5 text-xs text-text-secondary">
+                  follows up
+                </span>
+              </div>
+              <a
+              href="#contact"
+              class="mt-8 btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold focus-ring"
+              data-su-element="button"
+            >
+                <iconify-icon icon="solar:user-speak-rounded-bold-duotone">
+                </iconify-icon>
+                Build Your AI Agent
+              </a>
+            </div>
+            <div class="reveal" style="--reveal-delay: 0.08s;">
+              <div class="surface-card rounded-3xl p-6">
+                <div class="rounded-2xl border border-border-soft/70 bg-bg-base/70 p-4">
+                  <div class="flex items-center justify-between">
+                    <p class="text-sm text-text-secondary" data-su-element="subheading">
+                      AI Agent Live Simulation
+                    </p>
+                    <span class="inline-flex items-center gap-1 text-xs text-success-soft">
+                      <iconify-icon icon="solar:shield-check-line-duotone">
+                      </iconify-icon>
+                      Active
+                    </span>
+                  </div>
+                  <div class="mt-4 space-y-3">
+                    <div class="flex items-start gap-3">
+                      <div class="h-9 w-9 rounded-full border border-border-soft bg-bg-surface-2 grid place-items-center text-brand-cyan">
+                        <iconify-icon icon="solar:user-line-duotone">
+                        </iconify-icon>
+                      </div>
+                      <div class="rounded-xl border border-border-soft bg-bg-surface/70 px-3 py-2 text-sm text-text-secondary">
+                        Hi, I need pricing details and the earliest demo slot for my team.
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3 justify-end">
+                      <div class="rounded-xl border border-brand-blue/40 bg-brand-blue/15 px-3 py-2 text-sm text-text-primary max-w-[85%]">
+                        Absolutely. I can help with both. May I confirm your team size and preferred contact number? I’ll log this in your CRM and reserve the next available slot.
+                      </div>
+                      <div class="h-9 w-9 rounded-full border border-brand-blue/40 bg-brand-blue/25 grid place-items-center text-brand-cyan">
+                        <iconify-icon icon="solar:cpu-bolt-line-duotone">
+                        </iconify-icon>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <div class="h-9 w-9 rounded-full border border-border-soft bg-bg-surface-2 grid place-items-center text-brand-cyan">
+                        <iconify-icon icon="solar:user-line-duotone">
+                        </iconify-icon>
+                      </div>
+                      <div class="rounded-xl border border-border-soft bg-bg-surface/70 px-3 py-2 text-sm text-text-secondary">
+                        Team of 12. You can reach me on WhatsApp.
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3 justify-end">
+                      <div class="rounded-xl border border-brand-blue/40 bg-brand-blue/15 px-3 py-2 text-sm text-text-primary max-w-[85%]">
+                        Great — qualified and saved. I’ve sent your pricing summary and proposed demo times to WhatsApp and email. Your account manager has been notified.
+                      </div>
+                      <div class="h-9 w-9 rounded-full border border-brand-blue/40 bg-brand-blue/25 grid place-items-center text-brand-cyan">
+                        <iconify-icon icon="solar:cpu-bolt-line-duotone">
+                        </iconify-icon>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="mt-4 text-xs text-text-muted" data-su-element="paragraph">
+                  Simulated flow for illustration: inquiry capture → AI qualification → CRM update → channel response → team escalation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+      id="automation-examples"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Automation Examples"
+      class="py-20 md:py-28"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              Imagine This Happening Automatically.
+            </h2>
+            <p class="mt-4 text-text-secondary" data-su-element="paragraph">
+              Practical workflows your team can launch, monitor, and scale with confidence.
+            </p>
+          </div>
+          <div class="mt-12 grid lg:grid-cols-2 gap-6">
+            <article class="surface-card rounded-3xl p-6 soft-hover reveal">
+              <h3 class="text-xl font-semibold" data-su-element="heading">
+                New Lead
+              </h3>
+              <ol class="mt-4 space-y-2 text-sm text-text-secondary" data-su-element="list">
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Website or form lead arrives.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  AI qualifies source and intent.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  CRM profile is created with context.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  WhatsApp intro message is sent instantly.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Sales owner gets priority notification.
+                </li>
+              </ol>
+            </article>
+            <article class="surface-card rounded-3xl p-6 soft-hover reveal" style="--reveal-delay: 0.05s;">
+              <h3 class="text-xl font-semibold" data-su-element="heading">
+                Customer Inquiry
+              </h3>
+              <ol class="mt-4 space-y-2 text-sm text-text-secondary" data-su-element="list">
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Question comes from WhatsApp or site chat.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  AI answers based on approved business rules.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Complex requests are escalated to human team.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Conversation and tags sync to CRM.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Follow-up task is scheduled automatically.
+                </li>
+              </ol>
+            </article>
+            <article class="surface-card rounded-3xl p-6 soft-hover reveal" style="--reveal-delay: 0.03s;">
+              <h3 class="text-xl font-semibold" data-su-element="heading">
+                Appointment
+              </h3>
+              <ol class="mt-4 space-y-2 text-sm text-text-secondary" data-su-element="list">
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Booking request is captured.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  AI checks available calendars and constraints.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Customer receives available slot options.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Confirmation + reminders are sent.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  CRM event and team timeline are updated.
+                </li>
+              </ol>
+            </article>
+            <article class="surface-card rounded-3xl p-6 soft-hover reveal" style="--reveal-delay: 0.08s;">
+              <h3 class="text-xl font-semibold" data-su-element="heading">
+                Sales Follow-Up
+              </h3>
+              <ol class="mt-4 space-y-2 text-sm text-text-secondary" data-su-element="list">
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Proposal is sent to a qualified lead.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Response window is tracked automatically.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Timed email + WhatsApp follow-up is triggered.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Owner task is created for personal outreach.
+                </li>
+                <li class="inline-flex items-start gap-2">
+                  <iconify-icon icon="solar:dot-duotone" class="text-brand-cyan mt-0.5">
+                  </iconify-icon>
+                  Outcome is logged for optimization insights.
+                </li>
+              </ol>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+      id="business-benefits"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Business Benefits"
+      class="py-20 md:py-28 bg-bg-base/55 border-y border-border-soft/65"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              Automation That Creates Real Business Value.
+            </h2>
+          </div>
+          <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal">
+              <iconify-icon icon="solar:clock-circle-line-duotone" class="text-2xl text-brand-cyan">
+              </iconify-icon>
+              <h3 class="mt-4 text-lg font-semibold" data-su-element="heading">
+                Save Time
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Reduce repetitive execution load and free teams for strategic work.
+              </p>
+            </article>
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal" style="--reveal-delay: 0.04s;">
+              <iconify-icon icon="solar:bolt-line-duotone" class="text-2xl text-brand-cyan">
+              </iconify-icon>
+              <h3 class="mt-4 text-lg font-semibold" data-su-element="heading">
+                Respond Faster
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Instant acknowledgment and routing improve customer confidence quickly.
+              </p>
+            </article>
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal" style="--reveal-delay: 0.08s;">
+              <iconify-icon icon="solar:target-line-duotone" class="text-2xl text-brand-cyan">
+              </iconify-icon>
+              <h3 class="mt-4 text-lg font-semibold" data-su-element="heading">
+                Capture More Opportunities
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Structured follow-up reduces lead drop-off and protects revenue potential.
+              </p>
+            </article>
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal" style="--reveal-delay: 0.02s;">
+              <iconify-icon icon="solar:chart-line-duotone" class="text-2xl text-brand-cyan">
+              </iconify-icon>
+              <h3 class="mt-4 text-lg font-semibold" data-su-element="heading">
+                Improve Productivity
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Teams operate with cleaner priorities and fewer process interruptions.
+              </p>
+            </article>
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal" style="--reveal-delay: 0.06s;">
+              <iconify-icon icon="solar:link-circle-line-duotone" class="text-2xl text-brand-cyan">
+              </iconify-icon>
+              <h3 class="mt-4 text-lg font-semibold" data-su-element="heading">
+                Connect Your Systems
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                CRM, communication channels, and internal tools share context automatically.
+              </p>
+            </article>
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal" style="--reveal-delay: 0.1s;">
+              <iconify-icon icon="solar:rocket-line-duotone" class="text-2xl text-brand-cyan">
+              </iconify-icon>
+              <h3 class="mt-4 text-lg font-semibold" data-su-element="heading">
+                Scale Your Operations
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Growth no longer depends on increasing manual coordination overhead.
+              </p>
+            </article>
+          </div>
+          <div class="mt-10 reveal">
+            <a
+            href="#roi-impact"
+            class="btn-secondary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold focus-ring"
+            data-su-element="button"
+          >
+              <iconify-icon icon="solar:calculator-minimalistic-line-duotone">
+              </iconify-icon>
+              Analyze My Business
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+      id="why-vsa-automations"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Why VSA Automations"
+      class="py-20 md:py-28"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              Why VSA Automations.
+            </h2>
+            <p class="mt-4 text-text-secondary" data-su-element="paragraph">
+              Premium execution with business-first thinking, not generic templates.
+            </p>
+          </div>
+          <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal">
+              <h3 class="text-lg font-semibold" data-su-element="heading">
+                Strategy Before Automation
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                We map decisions and outcomes first, then implement technology that serves them.
+              </p>
+            </article>
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal" style="--reveal-delay: 0.04s;">
+              <h3 class="text-lg font-semibold" data-su-element="heading">
+                Built Around Existing Systems
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Your current tools stay useful; we connect and enhance them for better flow.
+              </p>
+            </article>
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal" style="--reveal-delay: 0.08s;">
+              <h3 class="text-lg font-semibold" data-su-element="heading">
+                Integration-Led Architecture
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                We design for cross-tool reliability, so operations remain consistent under growth.
+              </p>
+            </article>
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal" style="--reveal-delay: 0.02s;">
+              <h3 class="text-lg font-semibold" data-su-element="heading">
+                Transparent Delivery Process
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                You see priorities, milestones, and expected outcomes at every stage.
+              </p>
+            </article>
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal" style="--reveal-delay: 0.06s;">
+              <h3 class="text-lg font-semibold" data-su-element="heading">
+                AI + Human Collaboration Design
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                Automation handles routine execution while your people focus on judgment and growth.
+              </p>
+            </article>
+            <article class="surface-card rounded-2xl p-6 soft-hover reveal" style="--reveal-delay: 0.1s;">
+              <h3 class="text-lg font-semibold" data-su-element="heading">
+                Ongoing Optimization Support
+              </h3>
+              <p class="mt-2 text-sm text-text-secondary" data-su-element="paragraph">
+                We continuously refine flows as market behavior and customer expectations evolve.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+      id="roi-impact"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="ROI / Impact"
+      class="py-20 md:py-28 bg-bg-base/55 border-y border-border-soft/65"
+      data-widget="roi-calculator"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              Stop Measuring Work in Hours. Start Measuring Results.
+            </h2>
+            <p class="mt-4 text-text-secondary" data-su-element="paragraph">
+              Use this quick impact model to estimate where automation could unlock the biggest gains.
+            </p>
+          </div>
+          <div class="mt-12 grid lg:grid-cols-2 gap-6 items-start">
+            <div class="surface-card rounded-3xl p-6 md:p-7 reveal">
+              <h3 class="text-xl font-semibold" data-su-element="heading">
+                Business Inputs
+              </h3>
+              <div class="mt-5 grid gap-4">
+                <div>
+                  <label for="roi-employees" class="text-sm text-text-secondary" data-su-element="subheading">
+                    Number of employees involved in repetitive tasks
+                  </label>
+                  <input id="roi-employees" data-required name="employees" type="number" min="1" value="8" class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring" />
+                </div>
+                <div>
+                  <label for="roi-hours" class="text-sm text-text-secondary" data-su-element="subheading">
+                    Repetitive hours per employee (weekly)
+                  </label>
+                  <input id="roi-hours" data-required name="hours" type="number" min="1" value="6" class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring" />
+                </div>
+                <div>
+                  <label for="roi-leads" class="text-sm text-text-secondary" data-su-element="subheading">
+                    Leads per month
+                  </label>
+                  <input id="roi-leads" data-required name="leads" type="number" min="0" value="180" class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring" />
+                </div>
+                <div>
+                  <label for="roi-inquiries" class="text-sm text-text-secondary" data-su-element="subheading">
+                    Customer inquiries per month
+                  </label>
+                  <input id="roi-inquiries" data-required name="inquiries" type="number" min="0" value="340" class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring" />
+                </div>
+              </div>
+              <button
+              type="button"
+              data-roi-calc
+              class="mt-6 btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold focus-ring"
+              data-su-element="button"
+            >
+                <iconify-icon icon="solar:calculator-bold-duotone">
+                </iconify-icon>
+                Analyze My Business
+              </button>
+            </div>
+            <div class="surface-card rounded-3xl p-6 md:p-7 reveal" style="--reveal-delay: 0.08s;">
+              <h3 class="text-xl font-semibold" data-su-element="heading">
+                Estimated Impact
+              </h3>
+              <div class="mt-5 space-y-4">
+                <div class="rounded-2xl border border-border-soft bg-bg-base/70 p-4">
+                  <p class="text-xs uppercase tracking-wide text-text-muted" data-su-element="subheading">
+                    Estimated repetitive hours / month
+                  </p>
+                  <p class="mt-1 text-3xl font-sora font-bold text-brand-cyan" data-output-hours data-su-element="paragraph">
+                    206 hrs
+                  </p>
+                </div>
+                <div class="rounded-2xl border border-border-soft bg-bg-base/70 p-4">
+                  <p class="text-xs uppercase tracking-wide text-text-muted" data-su-element="subheading">
+                    Potential automation opportunities
+                  </p>
+                  <p class="mt-1 text-3xl font-sora font-bold text-brand-cyan" data-output-opportunities data-su-element="paragraph">
+                    236
+                  </p>
+                </div>
+                <div class="rounded-2xl border border-border-soft bg-bg-base/70 p-4">
+                  <p class="text-xs uppercase tracking-wide text-text-muted" data-su-element="subheading">
+                    Priority workflow areas
+                  </p>
+                  <ul class="mt-2 space-y-1.5 text-sm text-text-secondary" data-su-element="list">
+                    <li data-priority-slot>
+                      Lead qualification and instant follow-up
+                    </li>
+                    <li data-priority-slot>
+                      Inquiry response automation (WhatsApp + Email)
+                    </li>
+                    <li data-priority-slot>
+                      CRM sync and team notification handoffs
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <p class="mt-4 text-xs text-text-muted leading-relaxed" data-su-element="paragraph">
+                Disclaimer: these estimates are illustrative and used for early planning only. Final impact depends on your process complexity, tool stack, and implementation scope.
+              </p>
+            </div>
+          </div>
+          <div class="mt-8 reveal">
+            <a
+            href="#contact"
+            class="btn-secondary inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold focus-ring"
+            data-su-element="button"
+          >
+              <iconify-icon icon="solar:chat-round-call-line-duotone">
+              </iconify-icon>
+              Talk to an Automation Expert
+            </a>
+          </div>
+        </div>
+      </section>
+      <section
+      id="case-study"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Case Study"
+      class="py-20 md:py-28"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              Automation in Action.
+            </h2>
+            <p class="mt-4 text-text-secondary" data-su-element="paragraph">
+              Example workflow structures shown below. Detailed case studies will be published soon.
+            </p>
+          </div>
+          <div class="mt-12 grid lg:grid-cols-3 gap-5">
+            <article class="surface-card rounded-2xl p-6 reveal">
+              <div class="inline-flex items-center gap-2 rounded-full border border-border-soft bg-bg-surface-2/70 px-3 py-1 text-xs text-text-muted">
+                <iconify-icon icon="solar:documents-line-duotone">
+                </iconify-icon>
+                Case Study Coming Soon
+              </div>
+              <dl class="mt-5 space-y-3 text-sm">
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Industry
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    Real Estate
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Problem
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    High inquiry volume with delayed first response and scattered follow-up.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Automation
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    AI qualification + CRM sync + instant WhatsApp response + team routing.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Outcome
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    Faster lead handling structure and improved follow-up consistency.
+                  </dd>
+                </div>
+              </dl>
+            </article>
+            <article class="surface-card rounded-2xl p-6 reveal" style="--reveal-delay: 0.05s;">
+              <div class="inline-flex items-center gap-2 rounded-full border border-border-soft bg-bg-surface-2/70 px-3 py-1 text-xs text-text-muted">
+                <iconify-icon icon="solar:documents-line-duotone">
+                </iconify-icon>
+                Example Workflow
+              </div>
+              <dl class="mt-5 space-y-3 text-sm">
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Industry
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    Healthcare
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Problem
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    Appointment inquiries and reminders handled manually across channels.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Automation
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    Booking confirmation flow, reminder logic, and escalation for exceptions.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Outcome
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    Reduced coordination effort and clearer patient communication sequence.
+                  </dd>
+                </div>
+              </dl>
+            </article>
+            <article class="surface-card rounded-2xl p-6 reveal" style="--reveal-delay: 0.09s;">
+              <div class="inline-flex items-center gap-2 rounded-full border border-border-soft bg-bg-surface-2/70 px-3 py-1 text-xs text-text-muted">
+                <iconify-icon icon="solar:documents-line-duotone">
+                </iconify-icon>
+                Case Study Coming Soon
+              </div>
+              <dl class="mt-5 space-y-3 text-sm">
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Industry
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    Agencies
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Problem
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    Client onboarding steps and internal handoffs were inconsistent.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Automation
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    Workflow triggers for onboarding, documentation, and stakeholder alerts.
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-text-muted" data-su-element="subheading">
+                    Outcome
+                  </dt>
+                  <dd class="text-text-secondary" data-su-element="paragraph">
+                    More predictable delivery flow and fewer missed operational steps.
+                  </dd>
+                </div>
+              </dl>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+      id="about"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="About"
+      class="py-20 md:py-28 bg-bg-base/55 border-y border-border-soft/65"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-10 items-start">
+            <div class="reveal">
+              <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+                We Don’t Just Build AI. We Build Business Systems.
+              </h2>
+              <p class="mt-5 text-text-secondary leading-relaxed" data-su-element="paragraph">
+                VSA Automations was built around one principle: automation should solve business problems, not add technical noise. We combine process strategy, AI understanding, workflow design, and tool integration into systems that teams can trust every day.
+              </p>
+              <p class="mt-4 text-text-secondary leading-relaxed" data-su-element="paragraph">
+                Our work is focused on measurable outcomes — faster lead response, reduced repetitive load, stronger follow-up consistency, and scalable operations.
+              </p>
+            </div>
+            <div class="reveal" style="--reveal-delay: 0.08s;">
+              <div class="surface-card rounded-3xl p-6">
+                <h3 class="text-lg font-semibold" data-su-element="heading">
+                  Business Transformation Path
+                </h3>
+                <ol class="mt-5 space-y-3" data-su-element="list">
+                  <li class="progress-step">
+                    <iconify-icon icon="solar:danger-circle-line-duotone" class="text-brand-violet">
+                    </iconify-icon>
+                    Business Problem
+                  </li>
+                  <li class="progress-step">
+                    <iconify-icon icon="solar:lightbulb-line-duotone" class="text-brand-cyan">
+                    </iconify-icon>
+                    Strategy
+                  </li>
+                  <li class="progress-step">
+                    <iconify-icon icon="solar:brain-line-duotone" class="text-brand-cyan">
+                    </iconify-icon>
+                    AI
+                  </li>
+                  <li class="progress-step">
+                    <iconify-icon icon="solar:refresh-circle-line-duotone" class="text-brand-cyan">
+                    </iconify-icon>
+                    Automation
+                  </li>
+                  <li class="progress-step">
+                    <iconify-icon icon="solar:link-circle-line-duotone" class="text-brand-cyan">
+                    </iconify-icon>
+                    Integration
+                  </li>
+                  <li class="progress-step">
+                    <iconify-icon icon="solar:medal-ribbons-star-line-duotone" class="text-success-soft">
+                    </iconify-icon>
+                    Business Result
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+      id="mission"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Mission"
+      class="py-20 md:py-28"
+    >
+        <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center">
+          <div class="reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              Our Mission.
+            </h2>
+            <p class="mt-6 text-2xl md:text-4xl font-sora font-semibold leading-tight text-text-primary" data-su-element="quote">
+              Make intelligent automation practical, reliable, and outcome-focused for every business ready to scale smarter.
+            </p>
+            <p class="mt-6 text-text-secondary max-w-3xl mx-auto leading-relaxed" data-su-element="paragraph">
+              We believe growth should not depend on manual firefighting. By combining AI agents, automation logic, and system integration, we help teams move from reactive operations to structured performance.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+      id="faq"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="FAQ"
+      class="py-20 md:py-28 bg-bg-base/55 border-y border-border-soft/65"
+      data-widget="faq"
+    >
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+          <div class="text-center reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+              Frequently Asked Questions.
+            </h2>
+            <p class="mt-4 text-text-secondary" data-su-element="paragraph">
+              Clear answers for decision-makers evaluating business automation.
+            </p>
+          </div>
+          <div class="mt-10 space-y-3 reveal" style="--reveal-delay: 0.08s;">
+            <article class="faq-item" data-faq-item data-open="true">
+              <h3>
+                <button
+                type="button"
+                class="w-full text-left px-5 py-4 flex items-center justify-between gap-3 focus-ring"
+                data-faq-trigger
+                aria-expanded="true"
+                aria-controls="faq-panel-1"
+              >
+                  <span class="font-semibold">
+                    What can VSA Automations automate first?
+                  </span>
+                  <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="faq-chevron text-brand-cyan">
+                  </iconify-icon>
+                </button>
+              </h3>
+              <div id="faq-panel-1" class="faq-panel px-5" data-faq-panel>
+                <p class="text-sm text-text-secondary" data-su-element="paragraph">
+                  We usually start with high-frequency workflows like lead capture, first response, follow-ups, and CRM updates where time loss is immediate and measurable.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item" data-faq-item data-open="false">
+              <h3>
+                <button
+                type="button"
+                class="w-full text-left px-5 py-4 flex items-center justify-between gap-3 focus-ring"
+                data-faq-trigger
+                aria-expanded="false"
+                aria-controls="faq-panel-2"
+              >
+                  <span class="font-semibold">
+                    Do we need to replace our CRM or existing tools?
+                  </span>
+                  <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="faq-chevron text-brand-cyan">
+                  </iconify-icon>
+                </button>
+              </h3>
+              <div id="faq-panel-2" class="faq-panel px-5" data-faq-panel>
+                <p class="text-sm text-text-secondary" data-su-element="paragraph">
+                  No. Our approach is integration-first. We design automation around your current stack and only recommend replacement if a tool blocks growth.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item" data-faq-item data-open="false">
+              <h3>
+                <button
+                type="button"
+                class="w-full text-left px-5 py-4 flex items-center justify-between gap-3 focus-ring"
+                data-faq-trigger
+                aria-expanded="false"
+                aria-controls="faq-panel-3"
+              >
+                  <span class="font-semibold">
+                    How long does an automation project take?
+                  </span>
+                  <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="faq-chevron text-brand-cyan">
+                  </iconify-icon>
+                </button>
+              </h3>
+              <div id="faq-panel-3" class="faq-panel px-5" data-faq-panel>
+                <p class="text-sm text-text-secondary" data-su-element="paragraph">
+                  Timelines vary by scope. Focused workflows can launch quickly, while full multi-system automation requires phased delivery and optimization.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item" data-faq-item data-open="false">
+              <h3>
+                <button
+                type="button"
+                class="w-full text-left px-5 py-4 flex items-center justify-between gap-3 focus-ring"
+                data-faq-trigger
+                aria-expanded="false"
+                aria-controls="faq-panel-4"
+              >
+                  <span class="font-semibold">
+                    Can you automate WhatsApp and email follow-ups together?
+                  </span>
+                  <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="faq-chevron text-brand-cyan">
+                  </iconify-icon>
+                </button>
+              </h3>
+              <div id="faq-panel-4" class="faq-panel px-5" data-faq-panel>
+                <p class="text-sm text-text-secondary" data-su-element="paragraph">
+                  Yes. We design coordinated multi-channel sequences so timing, messaging, and CRM status stay synchronized.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item" data-faq-item data-open="false">
+              <h3>
+                <button
+                type="button"
+                class="w-full text-left px-5 py-4 flex items-center justify-between gap-3 focus-ring"
+                data-faq-trigger
+                aria-expanded="false"
+                aria-controls="faq-panel-5"
+              >
+                  <span class="font-semibold">
+                    Do you build AI agents for lead qualification?
+                  </span>
+                  <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="faq-chevron text-brand-cyan">
+                  </iconify-icon>
+                </button>
+              </h3>
+              <div id="faq-panel-5" class="faq-panel px-5" data-faq-panel>
+                <p class="text-sm text-text-secondary" data-su-element="paragraph">
+                  Absolutely. We build agent behavior around your qualification criteria, escalation rules, and brand communication tone.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item" data-faq-item data-open="false">
+              <h3>
+                <button
+                type="button"
+                class="w-full text-left px-5 py-4 flex items-center justify-between gap-3 focus-ring"
+                data-faq-trigger
+                aria-expanded="false"
+                aria-controls="faq-panel-6"
+              >
+                  <span class="font-semibold">
+                    Is our business data secure?
+                  </span>
+                  <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="faq-chevron text-brand-cyan">
+                  </iconify-icon>
+                </button>
+              </h3>
+              <div id="faq-panel-6" class="faq-panel px-5" data-faq-panel>
+                <p class="text-sm text-text-secondary" data-su-element="paragraph">
+                  Security and data handling are built into architecture planning, including permission boundaries, audit visibility, and responsible tool selection.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item" data-faq-item data-open="false">
+              <h3>
+                <button
+                type="button"
+                class="w-full text-left px-5 py-4 flex items-center justify-between gap-3 focus-ring"
+                data-faq-trigger
+                aria-expanded="false"
+                aria-controls="faq-panel-7"
+              >
+                  <span class="font-semibold">
+                    What happens if our process changes later?
+                  </span>
+                  <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="faq-chevron text-brand-cyan">
+                  </iconify-icon>
+                </button>
+              </h3>
+              <div id="faq-panel-7" class="faq-panel px-5" data-faq-panel>
+                <p class="text-sm text-text-secondary" data-su-element="paragraph">
+                  We design modular workflows that can be adjusted as your team structure, tools, or customer journey evolves.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item" data-faq-item data-open="false">
+              <h3>
+                <button
+                type="button"
+                class="w-full text-left px-5 py-4 flex items-center justify-between gap-3 focus-ring"
+                data-faq-trigger
+                aria-expanded="false"
+                aria-controls="faq-panel-8"
+              >
+                  <span class="font-semibold">
+                    Will our team need technical training?
+                  </span>
+                  <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="faq-chevron text-brand-cyan">
+                  </iconify-icon>
+                </button>
+              </h3>
+              <div id="faq-panel-8" class="faq-panel px-5" data-faq-panel>
+                <p class="text-sm text-text-secondary" data-su-element="paragraph">
+                  We provide practical enablement so your team can confidently operate day-to-day workflows and understand when to escalate.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item" data-faq-item data-open="false">
+              <h3>
+                <button
+                type="button"
+                class="w-full text-left px-5 py-4 flex items-center justify-between gap-3 focus-ring"
+                data-faq-trigger
+                aria-expanded="false"
+                aria-controls="faq-panel-9"
+              >
+                  <span class="font-semibold">
+                    How do pricing and project scope work?
+                  </span>
+                  <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="faq-chevron text-brand-cyan">
+                  </iconify-icon>
+                </button>
+              </h3>
+              <div id="faq-panel-9" class="faq-panel px-5" data-faq-panel>
+                <p class="text-sm text-text-secondary" data-su-element="paragraph">
+                  Scope is based on workflow complexity, number of integrations, and rollout phases. We define transparent deliverables before implementation.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item" data-faq-item data-open="false">
+              <h3>
+                <button
+                type="button"
+                class="w-full text-left px-5 py-4 flex items-center justify-between gap-3 focus-ring"
+                data-faq-trigger
+                aria-expanded="false"
+                aria-controls="faq-panel-10"
+              >
+                  <span class="font-semibold">
+                    How do we get started with VSA Automations?
+                  </span>
+                  <iconify-icon icon="solar:alt-arrow-down-line-duotone" class="faq-chevron text-brand-cyan">
+                  </iconify-icon>
+                </button>
+              </h3>
+              <div id="faq-panel-10" class="faq-panel px-5" data-faq-panel>
+                <p class="text-sm text-text-secondary" data-su-element="paragraph">
+                  Start with a consultation. We evaluate your current process, identify high-impact opportunities, and propose a phased automation roadmap.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+      id="final-cta"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Final CTA"
+      class="relative py-20 md:py-28 overflow-hidden"
+    >
+        <div class="absolute inset-0 opacity-70" aria-hidden="true">
+          <div class="glow-backdrop left-1/2 -translate-x-1/2 top-10">
+          </div>
+          <svg class="line-svg" viewBox="0 0 1600 600" preserveAspectRatio="none">
+            <path class="line-flow" d="M100 500 C450 360, 650 360, 900 250 C1080 170, 1300 160, 1500 60">
+            </path>
+            <path class="line-flow alt" d="M60 110 C300 180, 640 320, 900 315 C1130 310, 1310 370, 1540 520">
+            </path>
+            <path class="line-flow" d="M120 300 C400 200, 640 140, 900 180 C1110 210, 1330 200, 1480 260">
+            </path>
+          </svg>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+          <div class="surface-card rounded-3xl p-8 md:p-12 text-center reveal">
+            <h2 class="text-3xl md:text-5xl font-bold leading-[1.12]" data-su-element="heading">
+              <span class="block">
+                Your Business Is Already Working.
+              </span>
+              <span class="block mt-2 chip-gradient">
+                Now Make It Work Smarter.
+              </span>
+            </h2>
+            <p class="mt-5 text-text-secondary max-w-3xl mx-auto" data-su-element="paragraph">
+              If repetitive processes, slow response, and disconnected tools are holding back growth, this is the right moment to redesign how your business executes.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+              href="#contact"
+              class="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold focus-ring"
+              data-su-element="button"
+            >
+                <iconify-icon icon="solar:rocket-bold-duotone">
+                </iconify-icon>
+                Get Your Business Automated
+              </a>
+              <a
+              href="#contact"
+              class="btn-secondary inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold focus-ring"
+              data-su-element="button"
+            >
+                <iconify-icon icon="solar:phone-calling-line-duotone">
+                </iconify-icon>
+                Talk to VSA Automations
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+      id="contact"
+      data-su-element="section"
+      data-su-el-version="1"
+      data-su-name="Contact"
+      class="py-20 md:py-28 bg-bg-base/55 border-y border-border-soft/65"
+      data-widget="contact-form"
+    >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="grid lg:grid-cols-5 gap-8">
+            <div class="lg:col-span-2 reveal">
+              <h2 class="text-3xl md:text-5xl font-bold leading-tight" data-su-element="heading">
+                Let’s Automate Your Business.
+              </h2>
+              <p class="mt-4 text-text-secondary leading-relaxed" data-su-element="paragraph">
+                Share your current challenges and we’ll identify the highest-impact automation opportunities for your team.
+              </p>
+              <ul class="mt-6 space-y-3 text-sm text-text-secondary" data-su-element="list">
+                <li class="inline-flex items-center gap-2">
+                  <iconify-icon icon="solar:check-circle-line-duotone" class="text-success-soft">
+                  </iconify-icon>
+                  Business-first strategy session
+                </li>
+                <li class="inline-flex items-center gap-2">
+                  <iconify-icon icon="solar:check-circle-line-duotone" class="text-success-soft">
+                  </iconify-icon>
+                  Workflow and integration opportunity map
+                </li>
+                <li class="inline-flex items-center gap-2">
+                  <iconify-icon icon="solar:check-circle-line-duotone" class="text-success-soft">
+                  </iconify-icon>
+                  Practical implementation roadmap
+                </li>
+              </ul>
+            </div>
+            <div class="lg:col-span-3 reveal" style="--reveal-delay: 0.08s;">
+              <div class="surface-card rounded-3xl p-6 md:p-7">
+                <form novalidate aria-label="Contact form for automation consultation" action="https://script.google.com/macros/s/AKfycbzVdoIZW3zW-9MHfhKGu2E3NLl23IFG_FOTHoU5h902CcYWRmPj4bmj9BLqVXHLPx4/exec" method="POST">
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label for="contact-name" class="text-sm text-text-secondary">
+                        Full Name
+                      </label>
+                      <input id="contact-name" name="fullName" data-required type="text" class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring" />
+                      <p class="mt-1 text-xs text-brand-violet hidden" data-error-for="contact-name">
+                      </p>
+                    </div>
+                    <div>
+                      <label for="contact-email" class="text-sm text-text-secondary">
+                        Business Email
+                      </label>
+                      <input id="contact-email" name="businessEmail" data-required type="email" class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring" />
+                      <p class="mt-1 text-xs text-brand-violet hidden" data-error-for="contact-email">
+                      </p>
+                    </div>
+                    <div>
+                      <label for="contact-phone" class="text-sm text-text-secondary">
+                        Phone / WhatsApp
+                      </label>
+                      <input id="contact-phone" name="phoneWhatsapp" data-required type="tel" class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring" />
+                      <p class="mt-1 text-xs text-brand-violet hidden" data-error-for="contact-phone">
+                      </p>
+                    </div>
+                    <div>
+                      <label for="contact-company" class="text-sm text-text-secondary">
+                        Company Name
+                      </label>
+                      <input id="contact-company" name="companyName" data-required type="text" class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring" />
+                      <p class="mt-1 text-xs text-brand-violet hidden" data-error-for="contact-company">
+                      </p>
+                    </div>
+                    <div>
+                      <label for="contact-industry" class="text-sm text-text-secondary">
+                        Industry
+                      </label>
+                      <select id="contact-industry" name="industry" data-required class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring">
+                        <option value="">
+                          Select industry
+                        </option>
+                        <option>
+                          Real Estate
+                        </option>
+                        <option>
+                          Automotive
+                        </option>
+                        <option>
+                          Education
+                        </option>
+                        <option>
+                          Healthcare
+                        </option>
+                        <option>
+                          E-Commerce
+                        </option>
+                        <option>
+                          Hospitality
+                        </option>
+                        <option>
+                          Agency
+                        </option>
+                        <option>
+                          Professional Services
+                        </option>
+                        <option>
+                          Other
+                        </option>
+                      </select>
+                      <p class="mt-1 text-xs text-brand-violet hidden" data-error-for="contact-industry">
+                      </p>
+                    </div>
+                    <div>
+                      <label for="contact-team-size" class="text-sm text-text-secondary">
+                        Team Size
+                      </label>
+                      <select id="contact-team-size" name="teamSize" data-required class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring">
+                        <option value="">
+                          Select team size
+                        </option>
+                        <option>
+                          1-5
+                        </option>
+                        <option>
+                          6-15
+                        </option>
+                        <option>
+                          16-40
+                        </option>
+                        <option>
+                          41-100
+                        </option>
+                        <option>
+                          100+
+                        </option>
+                      </select>
+                      <p class="mt-1 text-xs text-brand-violet hidden" data-error-for="contact-team-size">
+                      </p>
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <label for="contact-tools" class="text-sm text-text-secondary">
+                      Current tools (CRM, channels, internal systems)
+                    </label>
+                    <input id="contact-tools" name="currentTools" type="text" class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring" />
+                  </div>
+                  <div class="mt-4">
+                    <label for="contact-message" class="text-sm text-text-secondary">
+                      What do you want to automate first?
+                    </label>
+                    <textarea id="contact-message" name="automationGoal" data-required rows="5" class="mt-2 w-full rounded-xl border border-border-soft bg-bg-base/75 px-3 py-2.5 text-text-primary focus-ring"></textarea>
+                    <p class="mt-1 text-xs text-brand-violet hidden" data-error-for="contact-message">
+                    </p>
+                  </div>
+                  <button
+                  type="submit"
+                  class="mt-6 btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold focus-ring"
+                  data-su-element="button"
+                >
+                    <iconify-icon icon="solar:paperclip-rounded-bold-duotone">
+                    </iconify-icon>
+                    Talk to an Automation Expert
+                  </button>
+                  <p class="mt-3 text-xs text-text-muted" data-su-element="paragraph">
+                    No spam. Just a focused automation consultation tailored to your business goals.
+                  </p>
+                  <div
+                  data-form-success
+                  class="mt-4 hidden rounded-xl border border-success-soft/45 bg-success-soft/12 px-4 py-3 text-sm text-text-secondary"
+                  aria-live="polite"
+                >
+                    Thank you — your request has been received. A VSA Automations specialist will reach out shortly.
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="border-t border-border-soft/70 bg-bg-deep">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+        <div class="grid md:grid-cols-3 gap-10">
+          <div>
+            <p class="font-sora text-xl font-bold" data-su-element="heading">
+              VSA Automations
+            </p>
+            <p class="mt-3 text-sm text-text-secondary" data-su-element="paragraph">
+              AI Automation for Smarter Businesses.
+            </p>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-text-primary" data-su-element="subheading">
+              Quick Links
+            </p>
+            <ul class="mt-3 space-y-2 text-sm text-text-secondary" data-su-element="list">
+              <li>
+                <a href="#solution" class="hover:text-text-primary focus-ring rounded-md" data-su-element="link">
+                  Solutions
+                </a>
+              </li>
+              <li>
+                <a href="#industries" class="hover:text-text-primary focus-ring rounded-md" data-su-element="link">
+                  Industries
+                </a>
+              </li>
+              <li>
+                <a href="#how-it-works" class="hover:text-text-primary focus-ring rounded-md" data-su-element="link">
+                  How It Works
+                </a>
+              </li>
+              <li>
+                <a href="#about" class="hover:text-text-primary focus-ring rounded-md" data-su-element="link">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#contact" class="hover:text-text-primary focus-ring rounded-md" data-su-element="link">
+                  Contact
+                </a>
+              </li>
+              <li>
+                <a href="privacy-policy.html" class="hover:text-text-primary focus-ring rounded-md" data-su-element="link">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-text-primary focus-ring rounded-md" data-su-element="link">
+                  Terms of Service
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-text-primary" data-su-element="subheading">
+              Social
+            </p>
+            <div class="mt-3 flex items-center gap-3">
+              <a href="#" aria-label="LinkedIn" class="h-10 w-10 rounded-xl border border-border-soft bg-bg-surface/70 grid place-items-center text-text-secondary hover:text-text-primary hover:border-brand-blue/50 focus-ring" data-su-element="link">
+                <iconify-icon icon="simple-icons:linkedin">
+                </iconify-icon>
+              </a>
+              <a href="#" aria-label="Instagram" class="h-10 w-10 rounded-xl border border-border-soft bg-bg-surface/70 grid place-items-center text-text-secondary hover:text-text-primary hover:border-brand-blue/50 focus-ring" data-su-element="link">
+                <iconify-icon icon="simple-icons:instagram">
+                </iconify-icon>
+              </a>
+              <a href="#" aria-label="X" class="h-10 w-10 rounded-xl border border-border-soft bg-bg-surface/70 grid place-items-center text-text-secondary hover:text-text-primary hover:border-brand-blue/50 focus-ring" data-su-element="link">
+                <iconify-icon icon="simple-icons:x">
+                </iconify-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+        <p class="mt-10 text-xs text-text-muted" data-su-element="paragraph">
+          © 2026 VSA Automations. All rights reserved.
+        </p>
+      </div>
+    </footer>
+    <button
+    id="scroll-to-top"
+    type="button"
+    aria-label="Scroll to top"
+    class="fixed bottom-6 right-6 z-50 h-11 w-11 rounded-xl border border-border-soft bg-bg-surface/90 text-text-primary grid place-items-center shadow-soft focus-ring"
+  >
+      <iconify-icon icon="solar:arrow-up-line-duotone" class="text-xl">
+      </iconify-icon>
+    </button>
+    <script>
+          (() => {
+            document.documentElement.classList.add('js-anim');
+            const io = new IntersectionObserver((es) => {
+              es.forEach((e) => {
+                if (e.isIntersecting) {
+                  e.target.classList.add('is-visible');
+                  io.unobserve(e.target);
+                }
+              });
+            }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      
+            document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+      
+            setTimeout(() => {
+              document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => el.classList.add('is-visible'));
+            }, 1200);
+      
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      
+            const header = document.getElementById('site-header');
+            if (header) {
+              const handleHeader = () => {
+                if (window.scrollY > 24) {
+                  header.classList.add('is-scrolled');
+                } else {
+                  header.classList.remove('is-scrolled');
+                }
+              };
+              handleHeader();
+              window.addEventListener('scroll', handleHeader, { passive: true });
+            }
+      
+            document.querySelectorAll('[data-widget="mobile-nav"]').forEach((root) => {
+              if (root.__mobileNavReady) return;
+              root.__mobileNavReady = true;
+      
+              const toggle = root.querySelector('[data-nav-toggle]');
+              const panel = root.querySelector('[data-nav-panel]');
+              const navLinks = root.querySelectorAll('[data-nav-panel] a[href^="#"]');
+      
+              if (!toggle || !panel) return;
+      
+              const setOpen = (open) => {
+                root.setAttribute('data-open', open ? 'true' : 'false');
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0px';
+                panel.style.opacity = open ? '1' : '0';
+                panel.style.paddingTop = open ? '0.75rem' : '0';
+                panel.style.paddingBottom = open ? '0.75rem' : '0';
+              };
+      
+              setOpen(false);
+      
+              toggle.addEventListener('click', () => {
+                const open = root.getAttribute('data-open') === 'true';
+                setOpen(!open);
+              });
+      
+              navLinks.forEach((link) => {
+                link.addEventListener('click', () => setOpen(false));
+              });
+      
+              window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                  setOpen(false);
+                }
+              });
+            });
+      
+            const scrollTopBtn = document.getElementById('scroll-to-top');
+            if (scrollTopBtn) {
+              const handleScrollTopBtn = () => {
+                if (window.scrollY > 400) {
+                  scrollTopBtn.classList.add('is-visible');
+                } else {
+                  scrollTopBtn.classList.remove('is-visible');
+                }
+              };
+      
+              handleScrollTopBtn();
+              window.addEventListener('scroll', handleScrollTopBtn, { passive: true });
+      
+              scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              });
+            }
+      
+            document.querySelectorAll('[data-widget="faq"]').forEach((root) => {
+              if (root.__faqReady) return;
+              root.__faqReady = true;
+      
+              const items = Array.from(root.querySelectorAll('[data-faq-item]'));
+      
+              const closeItem = (item) => {
+                item.setAttribute('data-open', 'false');
+                const trigger = item.querySelector('[data-faq-trigger]');
+                const panel = item.querySelector('[data-faq-panel]');
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+                if (panel) panel.style.maxHeight = '0px';
+              };
+      
+              const openItem = (item) => {
+                item.setAttribute('data-open', 'true');
+                const trigger = item.querySelector('[data-faq-trigger]');
+                const panel = item.querySelector('[data-faq-panel]');
+                if (trigger) trigger.setAttribute('aria-expanded', 'true');
+                if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
+              };
+      
+              items.forEach((item) => {
+                const trigger = item.querySelector('[data-faq-trigger]');
+                const panel = item.querySelector('[data-faq-panel]');
+                if (!trigger || !panel) return;
+      
+                if (item.getAttribute('data-open') === 'true') {
+                  openItem(item);
+                } else {
+                  closeItem(item);
+                }
+      
+                trigger.addEventListener('click', () => {
+                  const isOpen = item.getAttribute('data-open') === 'true';
+                  items.forEach((other) => closeItem(other));
+                  if (!isOpen) {
+                    openItem(item);
+                  }
+                });
+              });
+      
+              window.addEventListener('resize', () => {
+                items.forEach((item) => {
+                  if (item.getAttribute('data-open') === 'true') {
+                    const panel = item.querySelector('[data-faq-panel]');
+                    if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
+                  }
+                });
+              });
+            });
+      
+            document.querySelectorAll('[data-widget="before-after"]').forEach((root) => {
+              if (root.__beforeAfterReady) return;
+              root.__beforeAfterReady = true;
+      
+              const steps = Array.from(root.querySelectorAll('[data-step-index]'));
+              if (!steps.length) return;
+      
+              const maxStep = steps.reduce((acc, el) => Math.max(acc, Number(el.getAttribute('data-step-index') || 0)), 0);
+      
+              const setProgress = (value) => {
+                steps.forEach((step) => {
+                  const stepIndex = Number(step.getAttribute('data-step-index') || 0);
+                  step.classList.toggle('is-active', stepIndex <= value);
+                });
+              };
+      
+              setProgress(0);
+      
+              if (reduceMotion) {
+                setProgress(maxStep);
+                return;
+              }
+      
+              let started = false;
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                  if (!entry.isIntersecting || started) return;
+                  started = true;
+                  let current = 0;
+                  setProgress(current);
+      
+                  const interval = setInterval(() => {
+                    if (!root.isConnected) {
+                      clearInterval(interval);
+                      return;
+                    }
+      
+                    current += 1;
+                    if (current > maxStep) {
+                      clearInterval(interval);
+                      setProgress(maxStep);
+                      return;
+                    }
+                    setProgress(current);
+                  }, 700);
+                  observer.unobserve(entry.target);
+                });
+              }, { threshold: 0.3 });
+      
+              observer.observe(root);
+            });
+      
+            document.querySelectorAll('[data-widget="roi-calculator"]').forEach((root) => {
+              if (root.__roiReady) return;
+              root.__roiReady = true;
+      
+              const employeesInput = root.querySelector('input[name="employees"]');
+              const hoursInput = root.querySelector('input[name="hours"]');
+              const leadsInput = root.querySelector('input[name="leads"]');
+              const inquiriesInput = root.querySelector('input[name="inquiries"]');
+              const calcButton = root.querySelector('[data-roi-calc]');
+              const outputHours = root.querySelector('[data-output-hours]');
+              const outputOpportunities = root.querySelector('[data-output-opportunities]');
+              const prioritySlots = root.querySelectorAll('[data-priority-slot]');
+      
+              if (!employeesInput || !hoursInput || !leadsInput || !inquiriesInput || !outputHours || !outputOpportunities || !calcButton) return;
+      
+              const calculate = () => {
+                const employees = Math.max(0, Number(employeesInput.value) || 0);
+                const hours = Math.max(0, Number(hoursInput.value) || 0);
+                const leads = Math.max(0, Number(leadsInput.value) || 0);
+                const inquiries = Math.max(0, Number(inquiriesInput.value) || 0);
+      
+                const monthlyRepetitiveHours = Math.round(employees * hours * 4.3);
+                const opportunities = Math.round((monthlyRepetitiveHours * 0.28) + (leads * 0.6) + (inquiries * 0.35));
+      
+                outputHours.textContent = `${monthlyRepetitiveHours.toLocaleString()} hrs`;
+                outputOpportunities.textContent = opportunities.toLocaleString();
+      
+                const priorities = [];
+                if (leads >= 100) priorities.push('Lead qualification and immediate follow-up workflows');
+                if (inquiries >= 200) priorities.push('Customer inquiry triage and response automation');
+                if (hours >= 8) priorities.push('Repetitive internal task and approval automation');
+                if (employees >= 15) priorities.push('Cross-team routing, escalation, and owner assignment');
+                priorities.push('CRM updates, reminders, and communication synchronization');
+      
+                prioritySlots.forEach((slot, idx) => {
+                  slot.textContent = priorities[idx] || 'Custom process mapping based on your operational bottlenecks';
+                });
+              };
+      
+              calcButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                calculate();
+              });
+      
+              [employeesInput, hoursInput, leadsInput, inquiriesInput].forEach((input) => {
+                input.addEventListener('input', calculate);
+              });
+      
+              calculate();
+            });
+      
+            document.querySelectorAll('[data-widget="contact-form"]').forEach((root) => {
+              if (root.__contactReady) return;
+              root.__contactReady = true;
+      
+              const form = root.querySelector('form');
+              const success = root.querySelector('[data-form-success]');
+              if (!form || !success) return;
+      
+              const fields = Array.from(form.querySelectorAll('[data-required]'));
+      
+              const setError = (field, message) => {
+                const errorEl = form.querySelector(`[data-error-for="${field.id}"]`);
+                if (!errorEl) return;
+                if (message) {
+                  errorEl.textContent = message;
+                  errorEl.classList.remove('hidden');
+                } else {
+                  errorEl.textContent = '';
+                  errorEl.classList.add('hidden');
+                }
+              };
+      
+              const validateField = (field) => {
+                const value = field.value.trim();
+      
+                if (!value) {
+                  setError(field, 'This field is required.');
+                  return false;
+                }
+      
+                if (field.type === 'email') {
+                  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+                  if (!valid) {
+                    setError(field, 'Please enter a valid email address.');
+                    return false;
+                  }
+                }
+      
+                setError(field, '');
+                return true;
+              };
+      
+              fields.forEach((field) => {
+                field.addEventListener('input', () => validateField(field));
+                field.addEventListener('blur', () => validateField(field));
+              });
+      
+              form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+      
+                let valid = true;
+                fields.forEach((field) => {
+                  if (!validateField(field)) valid = false;
+                });
+      
+                if (!valid) return;
+      
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonHtml = submitButton ? submitButton.innerHTML : '';
+                if (submitButton) {
+                  submitButton.disabled = true;
+                  submitButton.classList.add('opacity-70', 'cursor-not-allowed');
+                  submitButton.innerHTML = 'Sending...';
+                }
+      
+                try {
+                  const formData = new FormData(form);
+                  formData.append('source', 'VSA Automations Website');
+                  formData.append('submittedAt', new Date().toISOString());
+      
+                  await fetch(form.action, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData,
+                  });
+      
+                  success.textContent = 'Thank you — your enquiry has been submitted. A VSA Automations specialist will reach out shortly.';
+                  success.classList.remove('hidden');
+                  form.reset();
+                  fields.forEach((field) => setError(field, ''));
+                } catch (error) {
+                  success.textContent = 'We could not submit your request right now. Please try again in a moment.';
+                  success.classList.remove('hidden');
+                } finally {
+                  if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.classList.remove('opacity-70', 'cursor-not-allowed');
+                    submitButton.innerHTML = originalButtonHtml;
+                  }
+                }
+              });
+            });
+          })();
+        
+    </script>
+  </body>
 </html>
